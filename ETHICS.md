@@ -47,7 +47,7 @@ An open-source model licence does not by itself guarantee that every generated o
 - **Model providers:** the free Gemini API tier may use content sent to it to improve Google's products, while paid-tier content is not used this way. Only what the film needs is sent: first names, the story and generic descriptions. No surnames, exact village, family photos or contact details are sent to any endpoint.
 - **Region:** kept vague ("a highland village in Tigray").
 - **User-test participants:**
-  - Feedback is recorded without names or unnecessary identifying details. Each person is listed only by a general role, such as "Tigrinya speaker" or "non-Tigrinya speaker".
+  - Feedback is recorded without names or unnecessary identifying details. Each person is listed only by a general role, such as "Tigrigna speaker" or "non-Tigrigna speaker".
   - Details such as relationship, age range or diaspora status are left out, because in a small community a combination of them could identify someone.
   - Participants are told before they give feedback that it may be included in the public project documentation.
 
@@ -66,5 +66,5 @@ The result of each review is noted in EXPERIMENTS.md or FAILURES.md, together wi
 ## 6. Style and cultural respect
 
 - The style is described by its qualities (for example cinematic, warm, soft lantern light) and never by naming a living artist.
-- Cultural details (white gabi, ህድሞ, ሳፁን, ኣጉዶ, ኣጅቦ, ሕምባሻ, መሶብ) were checked against the author's family knowledge and recollections. Native-speaker validation of the Tigrinya narration and names is recorded separately, in DESIGN.md (section 7, the Tigrinya sample check, and sections 8–9, the user tests).
+- Cultural details (white gabi, ህድሞ, ሳፁን, ኣጉዶ, ኣጅቦ, ሕምባሻ, መሶብ) were checked against the author's family knowledge and recollections. Native-speaker validation of the Tigrigna narration and names is recorded separately, in DESIGN.md (section 7, the Tigrigna sample check, and sections 8–9, the user tests).
 - The film leaves out recent political events. It is about two brothers and their love.
