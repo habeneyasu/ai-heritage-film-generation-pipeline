@@ -1,0 +1,70 @@
+# ETHICS.md
+
+## 1. Family authorization and consent
+
+| Person | Relation | How they appear | Permission | Date | Form |
+|---|---|---|---|---|---|
+| My father | Storyteller and grandson of ወልደቻኣል; the custodian of this story | Not shown and not voiced; his story is retold in my words | **Consent given.** He agreed that I may make and publicly post an AI-made film of our family story about ወልደቻኣል and ተስፋይ, using their names, narrated by an AI voice | 2026-11-25 | Verbal, reported by the author. *The evidence of his permission is kept privately by the author.* |
+| ወልደቻኣል | My great-grandfather (deceased) | An **imagined** AI-generated character; no photographs exist or were used | **Family authorization** (see below) | 2026-11-25 | As above |
+| ተስፋይ | His brother (deceased) | An **imagined** AI-generated character; no photographs exist or were used | **Family authorization** (see below) | 2026-11-25 | As above |
+
+**Family authorization:** my father, the family's storyteller and custodian of this story, gave permission for its retelling and for imagined AI depictions of ወልደቻኣል and ተስፋይ. This is family authorization, not direct consent from the deceased.
+
+**Likeness:** no photographs, recordings or descriptions of real faces are given to any model. The faces are invented from a written character description.
+
+**Voice:** the narration uses a stock Gemini TTS voice. No real person's voice is cloned or imitated. The narration is my own words, and the quoted lines (ሓወይ, ፀውዕዎ) are the words the family remembers them saying.
+
+## 2. Labelling and AI disclosure
+
+- A visible end card in the film (about 3 s, added in code) says the film was made with AI.
+- The public post has the platform's AI-content disclosure label switched on.
+- The post text says the images, motion, music and narration were generated with AI models.
+- **Fictional likeness statement**, in the post text and the README: *"The characters are fictional AI-generated interpretations based on written family recollections. They are not verified historical likenesses."* This keeps viewers from reading the generated faces as authentic photographs.
+- Watermarks and provenance metadata (SynthID, C2PA) from the models are left intact. Nothing is stripped in assembly.
+
+## 3. Licences, provider terms and output rights
+
+Three different things are tracked separately:
+- the **model licence** (the terms for using the weights),
+- the **provider's terms** (the terms of the service that runs the model),
+- the **rights in the generated outputs**.
+
+An open-source model licence does not by itself guarantee that every generated output is free of third-party rights claims. That is why section 5 adds a review before publication.
+
+*Each entry is checked against the model card or service terms when the model is first used. "To verify" means it has not yet been checked.*
+
+| Stage | Model / tool | Model licence | Provider terms | Output rights |
+|---|---|---|---|---|
+| Script, translation | Gemini 3.8 Flash / Flash-Lite | Proprietary (API access only) | Gemini API terms; the free tier may use content to improve Google's products (see section 4) | To verify |
+| Narration | Gemini 3.8 Flash TTS | Proprietary (API access only) | Gemini API terms, as above | To verify |
+| Keyframes | FLUX.2 klein 4B / FLUX.1 schnell | Apache 2.0 (klein 4B, schnell). The klein 9B version has a different, non-commercial licence and **will not be used**. | Cloudflare Workers AI terms: **to verify** | To verify |
+| Moving shots | Wan 2.2 TI2V-5B | Apache 2.0 (model card) | **Kaggle is the provider** even though the notebook is mine: Kaggle terms to verify. The weights are downloaded from Hugging Face (model-hosting and download terms to verify) and **run inside the Kaggle notebook**, not through an external API. | To verify |
+| Music | ACE-Step 1.5 | MIT (project licence) | **Kaggle is the provider**: Kaggle terms to verify. The weights are downloaded from Hugging Face (model-hosting and download terms to verify) and **run inside the Kaggle notebook**, not through an external API. | The project states outputs may be used commercially. This is **not** treated as a guarantee of copyright clearance for every track; see the originality check in section 5. |
+| Assembly | FFmpeg | LGPL / GPL (tool only) | Not applicable (runs locally) | Not applicable |
+
+## 4. Private data
+
+- **Model providers:** the free Gemini API tier may use content sent to it to improve Google's products, while paid-tier content is not used this way. Only what the film needs is sent: first names, the story and generic descriptions. No surnames, exact village, family photos or contact details are sent to any endpoint.
+- **Region:** kept vague ("a highland village in Tigray").
+- **User-test participants:**
+  - Feedback is recorded without names or unnecessary identifying details. Each person is listed only by a general role, such as "Tigrinya speaker" or "non-Tigrinya speaker".
+  - Details such as relationship, age range or diaspora status are left out, because in a small community a combination of them could identify someone.
+  - Participants are told before they give feedback that it may be included in the public project documentation.
+
+## 5. Review before publication (originality and representation)
+
+Before the film or any asset is published, every generated output is reviewed:
+
+| Check | Applies to | What is checked |
+|---|---|---|
+| Music originality | Score candidates and the final score | The score is reviewed for recognisable similarities to known protected compositions, particularly melodies and distinctive hooks. Any suspicious track is rejected and regenerated with a different seed and prompt. This review reduces risk but does not guarantee copyright clearance. |
+| Cultural representation | Keyframes and video shots | Clothing, homes, food and customs are shown respectfully and accurately, following the visual rules in DESIGN.md. There are no caricatures and no elements from other cultures or periods. |
+| Unintended marks | All images and video | There is no unintended text, logos or watermarks beyond the expected model provenance (SynthID, C2PA). |
+
+The result of each review is noted in EXPERIMENTS.md or FAILURES.md, together with what was regenerated.
+
+## 6. Style and cultural respect
+
+- The style is described by its qualities (for example cinematic, warm, soft lantern light) and never by naming a living artist.
+- Cultural details (white gabi, ህድሞ, ሳፁን, ኣጉዶ, ኣጅቦ, ሕምባሻ, መሶብ) were checked against the author's family knowledge and recollections. Native-speaker validation of the Tigrinya narration and names is recorded separately, in DESIGN.md (section 7, the Tigrinya sample check, and sections 8–9, the user tests).
+- The film leaves out recent political events. It is about two brothers and their love.
