@@ -4,6 +4,11 @@ A pipeline that turns one storyboard (`storyboard.json`) into a 60–90 second s
 
 The film tells a true family story from Tigray, narrated in Tigrinya with English subtitles.
 
+- **Story, audience and shot plan:** [DESIGN.md](DESIGN.md)
+- **Consent, licences and AI disclosure:** [ETHICS.md](ETHICS.md)
+
+> The characters are fictional AI-generated interpretations based on written family recollections. They are not verified historical likenesses.
+
 > **Status:** project structure only. Setup and the one-command run (`make film`) will be documented here as each stage is implemented.
 
 ## Structure
