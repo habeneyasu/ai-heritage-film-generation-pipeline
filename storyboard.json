@@ -1,0 +1,157 @@
+{
+  "title": "A Love That Never Walked Alone",
+  "version": 1,
+  "language": "ti",
+  "subtitle_language": "en",
+  "fps": 24,
+  "style_block": "Cinematic historical realism, mid-20th century rural Tigray highlands, natural light, warm earth tones, soft film grain, authentic traditional stone architecture, traditional clothing, no modern elements, no text, subject centred in frame.",
+  "characters": {
+    "weldechael": {
+      "name": "ወልደቻኣል",
+      "description": "an Ethiopian highland man in his late fifties with a short grey beard and grey hair, slim build, wearing a traditional white cotton gabi wrapped over his shoulders, holding a wooden walking stick"
+    },
+    "tesfay": {
+      "name": "ተስፋይ",
+      "description": "an Ethiopian highland man in his mid-fifties with a short dark beard just beginning to grey and short dark hair, wearing a traditional white cotton gabi wrapped over his shoulders"
+    }
+  },
+  "models": {
+    "narration": { "model": "gemini-3.8-flash-tts", "api_version": "v1beta", "voice": "Sulafat", "style": null },
+    "keyframes": { "model": "@cf/black-forest-labs/flux-1-schnell", "width": 1024, "height": 1024, "steps": 4 },
+    "shots": { "model": "Wan-AI/Wan2.2-TI2V-5B" },
+    "music": { "model": "ACE-Step 1.5" }
+  },
+  "music_cues": [
+    {
+      "id": "gathering",
+      "purpose": "Warm and intimate; the brothers' bond at the gathering. Sits quietly under the voice.",
+      "caption": "traditional Ethiopian krar, soft masenqo, gentle hand percussion, warm, intimate, acoustic, sparse texture, no strong lead melody",
+      "bpm": 72, "key": "A minor", "instrumental": true
+    },
+    {
+      "id": "journey",
+      "purpose": "The night walk; a slow, repeating walking motif that mirrors the back-and-forth.",
+      "caption": "slow walking rhythm, soft repeating krar motif, low gentle drone, night atmosphere, tender, hypnotic, acoustic, sparse",
+      "bpm": 66, "key": "A minor", "instrumental": true
+    },
+    {
+      "id": "dawn",
+      "purpose": "Dawn and the closing line; the motif returns brighter and resolves.",
+      "caption": "the krar motif returns brighter, rising masenqo melody, hopeful, warm, resolved, acoustic, gentle",
+      "bpm": 66, "key": "A major", "instrumental": true
+    }
+  ],
+  "shots": [
+    {
+      "id": "s01", "duration_s": 6, "size": "extreme wide",
+      "reason": "Place, and the distance between the brothers",
+      "characters": [],
+      "image_prompt": "Extreme wide shot at dusk: two similar traditional stone homesteads, each with a round stone house, a rectangular stone house and a small grass-roofed kitchen hut, far apart across a wide highland valley with stone terraces and dry-stone walls, a rocky mountain ridge behind.",
+      "motion_prompt": "Slow push-in, gentle evening haze drifts across the valley.",
+      "seed": 101, "fallback": "kenburns-in",
+      "narration": { "ti": "ኣብ ሓንቲ ዓዲ ዶግዓ ትግራይ፡ ወልደቻኣልን ተስፋይን ዝበሃሉ ክልተ ኣሕዋት ይነብሩ ነበሩ።", "en": "In a highland village in Tigray, there lived two brothers, Weldechael and Tesfay." },
+      "music_cue": "gathering"
+    },
+    {
+      "id": "s02", "duration_s": 6, "size": "medium",
+      "reason": "Love in action #1: he will not take part without his brother",
+      "characters": ["tesfay"],
+      "image_prompt": "Medium shot inside a stone house during a family gathering: food laid out on a woven mesob basket table, people seated around it, one man standing apart near the doorway, not joining, waiting.",
+      "motion_prompt": "Locked-off camera; the seated people settle while the standing man waits.",
+      "seed": 102, "fallback": "kenburns-in",
+      "narration": { "ti": "ኣብ ዝኾነ ምትእኽኻብ፡ ሓደ ብዘይ እቲ ሓደ ኣየብዕልን ነይሩ።", "en": "At every gathering, neither would celebrate without the other." },
+      "music_cue": "gathering"
+    },
+    {
+      "id": "s03", "duration_s": 6, "size": "close-up",
+      "reason": "The request: he sends for his brother and waits",
+      "characters": ["tesfay"],
+      "image_prompt": "Close-up of the man turning to the people around him and speaking, gesturing gently toward the open door, soft daylight from the doorway.",
+      "motion_prompt": "Slight push-in on his face as he speaks.",
+      "seed": 103, "fallback": "kenburns-in",
+      "narration": { "ti": "«ወልደቻኣል ሓወይ ፀውዕዎ» ይብል ነይሩ፡ ክሳዕ ሓዉ ዝመጽእ ድማ ይጽበ።", "en": "\"Call my brother Weldechael,\" he would say, and wait until he came." },
+      "music_cue": "gathering"
+    },
+    {
+      "id": "s04", "duration_s": 6, "size": "wide",
+      "reason": "The wait ends; they are always together",
+      "characters": ["weldechael", "tesfay"],
+      "image_prompt": "Wide shot inside the stone house: the elder brother arrives through the doorway with his walking stick, the younger brother greets him, and they sit down together at the mesob with bread, honey and fresh cheese.",
+      "motion_prompt": "Slow pan following the elder brother as he enters and sits.",
+      "seed": 104, "fallback": "pan-right",
+      "narration": { "ti": "ሓዉ ምስ መጸ ጥራይ እዩ ዘብዕል ነይሩ።", "en": "Only when his brother arrived would he join the celebration." },
+      "music_cue": "gathering"
+    },
+    {
+      "id": "s05", "duration_s": 5, "size": "insert",
+      "reason": "Love without words",
+      "characters": ["weldechael", "tesfay"],
+      "image_prompt": "Close-up insert of hands: one man's hand gently feeding the other a bite of injera (gursha), warm light, the mesob basket softly out of focus behind.",
+      "motion_prompt": "Static camera; the hands move slowly.",
+      "seed": 105, "fallback": "kenburns-in",
+      "narration": { "ti": "ፍቕሮም ብተግባር እዩ ዝረአ ነይሩ።", "en": "Their love was seen in what they did." },
+      "music_cue": "gathering"
+    },
+    {
+      "id": "s06", "duration_s": 7, "size": "wide",
+      "reason": "The journey begins",
+      "characters": ["weldechael", "tesfay"],
+      "image_prompt": "Wide shot at dusk turning to night: the two brothers walk side by side on a stone path through the highlands, one holding a kerosene lantern, the homestead behind them.",
+      "motion_prompt": "Camera tracks slowly alongside the walking brothers; the lantern flame flickers.",
+      "seed": 106, "fallback": "pan-left",
+      "narration": { "ti": "ምሸት ምስ ኮነ፡ ወልደቻኣል ንተስፋይ ክሳዕ ገዝኡ የሰንዮ።", "en": "When night fell, Weldechael walked Tesfay home." },
+      "music_cue": "journey"
+    },
+    {
+      "id": "s07", "duration_s": 8, "size": "medium",
+      "reason": "The loop begins: they take turns",
+      "characters": ["weldechael", "tesfay"],
+      "image_prompt": "Medium shot at night by the door of a stone homestead: the younger brother turns back toward the path beside his elder brother, warm lantern light, moonlight.",
+      "motion_prompt": "Locked-off camera; the younger brother turns and steps back onto the path.",
+      "seed": 107, "fallback": "kenburns-out",
+      "narration": { "ti": "ተስፋይ ግን ሓዉ ንበይኑ ክምለስ ኣይፈቐደን፤ መሊሱ ኣሰነዮ።", "en": "But Tesfay would not let him return alone, and walked him back." },
+      "music_cue": "journey"
+    },
+    {
+      "id": "s08", "duration_s": 9, "size": "medium",
+      "reason": "The loop repeats; the night deepens",
+      "characters": ["weldechael", "tesfay"],
+      "image_prompt": "Medium shot later at night, the moon high: at the door of the other, near-identical stone homestead, the elder brother turns back to walk with the younger brother again, lantern light.",
+      "motion_prompt": "Locked-off camera; the elder brother turns and steps back onto the path.",
+      "seed": 108, "fallback": "kenburns-out",
+      "narration": { "ti": "ኣብ ገዛ ወልደቻኣል ምስ በጽሑ ድማ፡ ወልደቻኣል ከም ብሓድሽ ንተስፋይ ኣሰነዮ።", "en": "And at Weldechael's door, Weldechael walked Tesfay back again." },
+      "music_cue": "journey"
+    },
+    {
+      "id": "s09", "duration_s": 9, "size": "close-up",
+      "reason": "The heart of the film",
+      "characters": ["weldechael", "tesfay"],
+      "image_prompt": "Close-up of the two brothers' faces side by side in warm lantern light at night, both smiling with deep affection.",
+      "motion_prompt": "Very slow push-in; lantern light flickers on their faces.",
+      "seed": 109, "fallback": "kenburns-in",
+      "narration": { "ti": "«ተስፋይ ሓወይ!» «ወልደቻኣል ሓወይ!»", "en": "\"My brother, Tesfay!\" \"My brother, Weldechael!\"" },
+      "music_cue": "journey"
+    },
+    {
+      "id": "s10", "duration_s": 9, "size": "wide",
+      "reason": "Night turns into dawn; they never said goodbye",
+      "characters": ["weldechael", "tesfay"],
+      "image_prompt": "Wide shot at first light: the sky pales from deep blue to soft dawn over the mountain ridge; the two brothers still walk side by side on the stone path, the lantern still glowing.",
+      "motion_prompt": "Slow tilt up from the walking brothers to the brightening sky.",
+      "seed": 110, "fallback": "pan-right",
+      "narration": { "ti": "ከምኡ እናበሉ ለይቲ ምሉእ ክሳዕ ወጋሕታ ክመላለሱ ሓደሩ፡ ።", "en": "And so they walked back and forth all night, until dawn." },
+      "music_cue": "dawn"
+    },
+    {
+      "id": "s11", "duration_s": 6, "size": "extreme wide",
+      "reason": "The story lives on in those who heard it",
+      "characters": [],
+      "image_prompt": "Extreme wide shot in full daylight: an empty stone path winding across the highland valley between two distant stone homesteads, peaceful and still.",
+      "motion_prompt": "Very slow pull-out; a light breeze moves the grass.",
+      "seed": 111, "fallback": "kenburns-out",
+      "narration": { "ti": "እዚ ዛንታ ክዓቢ ከለኹ ዝሰማዕክዎ እዩ። ሓቀኛ ሃብቲ፡ ኣብ ጎንና ዝጓዓዙ ሰባት እዮም።", "en": "A story I grew up hearing. True wealth is the people who walk beside us." },
+      "music_cue": "dawn"
+    }
+  ],
+  "end_card": { "text": "Made with AI: images, motion, music and narration were generated by AI models.", "duration_s": 3 }
+}

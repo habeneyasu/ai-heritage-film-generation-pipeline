@@ -2,7 +2,7 @@
 
 A pipeline that turns one storyboard (`storyboard.json`) into a 60–90 second short film with keyframes, moving shots, an original score, narration and a finished edit, exported in 9:16 and 16:9.
 
-The film tells a true family story from Tigray, narrated in Tigrinya with English subtitles.
+The film tells a true family story from Tigray, narrated in Tigrigna with English subtitles.
 
 - **Story, audience and shot plan:** [DESIGN.md](DESIGN.md)
 - **Consent, licences and AI disclosure:** [ETHICS.md](ETHICS.md)
