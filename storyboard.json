@@ -59,7 +59,7 @@
       "image_prompt": "Medium shot inside a stone house during a family gathering: food laid out on a woven mesob basket table, people seated around it, one man standing apart near the doorway, not joining, waiting.",
       "motion_prompt": "Locked-off camera; the seated people settle while the standing man waits.",
       "seed": 102, "fallback": "kenburns-in",
-      "narration": { "ti": "ኣብ ዝኾነ ምትእኽኻብ፡ ሓደ ብዘይ እቲ ሓደ ኣየብዕልን ነይሩ።", "en": "At every gathering, neither would celebrate without the other." },
+      "narration": { "ti": "ኣብ ዝኾነ ማሕበራዊ ጉዳይ ወይ ምትእኽኻብ፡ እቲ ሓደ ብዘይካ እቲ ሓደ ደስ ኣይብሎን፡ ስለዝኾነ ድማ ወልደቻኣል «ተስፋይ ሓወይ ፀዉዕዎ» ይብል፡ ተስፋይ እውን ከምኡ።", "en": "Neither was happy at a gathering without the other; each would send for his brother." },
       "music_cue": "gathering"
     },
     {
@@ -69,7 +69,7 @@
       "image_prompt": "Close-up of the man turning to the people around him and speaking, gesturing gently toward the open door, soft daylight from the doorway.",
       "motion_prompt": "Slight push-in on his face as he speaks.",
       "seed": 103, "fallback": "kenburns-in",
-      "narration": { "ti": "«ወልደቻኣል ሓወይ ፀውዕዎ» ይብል ነይሩ፡ ክሳዕ ሓዉ ዝመጽእ ድማ ይጽበ።", "en": "\"Call my brother Weldechael,\" he would say, and wait until he came." },
+      "narration": { "ti": "ክሳዕ ሓዉ ዝመጽእ ድማ ይጽበ ነይሩ።", "en": "And he would wait until his brother came." },
       "music_cue": "gathering"
     },
     {
@@ -99,7 +99,7 @@
       "image_prompt": "Wide shot at dusk turning to night: the two brothers walk side by side on a stone path through the highlands, one holding a kerosene lantern, the homestead behind them.",
       "motion_prompt": "Camera tracks slowly alongside the walking brothers; the lantern flame flickers.",
       "seed": 106, "fallback": "pan-left",
-      "narration": { "ti": "ምሸት ምስ ኮነ፡ ወልደቻኣል ንተስፋይ ክሳዕ ገዝኡ የሰንዮ።", "en": "When night fell, Weldechael walked Tesfay home." },
+      "narration": { "ti": "ምሸት ምስ ኮነ፡ ወልደቻኣል ንተስፋይ ክሳዕ ገዝኡ ይሰንዮ።", "en": "When night fell, Weldechael walked Tesfay home." },
       "music_cue": "journey"
     },
     {
@@ -109,7 +109,7 @@
       "image_prompt": "Medium shot at night by the door of a stone homestead: the younger brother turns back toward the path beside his elder brother, warm lantern light, moonlight.",
       "motion_prompt": "Locked-off camera; the younger brother turns and steps back onto the path.",
       "seed": 107, "fallback": "kenburns-out",
-      "narration": { "ti": "ተስፋይ ግን ሓዉ ንበይኑ ክምለስ ኣይፈቐደን፤ መሊሱ ኣሰነዮ።", "en": "But Tesfay would not let him return alone, and walked him back." },
+      "narration": { "ti": "ተስፋይ ግን ሓዉ ንበይኑ ክምለስ ኣይፈቐደን፤ መሊሱ ሰነዮ።", "en": "But Tesfay would not let him return alone, and walked him back." },
       "music_cue": "journey"
     },
     {
@@ -119,7 +119,7 @@
       "image_prompt": "Medium shot later at night, the moon high: at the door of the other, near-identical stone homestead, the elder brother turns back to walk with the younger brother again, lantern light.",
       "motion_prompt": "Locked-off camera; the elder brother turns and steps back onto the path.",
       "seed": 108, "fallback": "kenburns-out",
-      "narration": { "ti": "ኣብ ገዛ ወልደቻኣል ምስ በጽሑ ድማ፡ ወልደቻኣል ከም ብሓድሽ ንተስፋይ ኣሰነዮ።", "en": "And at Weldechael's door, Weldechael walked Tesfay back again." },
+      "narration": { "ti": "ኣብ ገዛ ወልደቻኣል ምስ በጽሑ ድማ፡ ወልደቻኣል ከም ብሓድሽ ንተስፋይ ሰነዮ።", "en": "And at Weldechael's door, Weldechael walked Tesfay back again." },
       "music_cue": "journey"
     },
     {
