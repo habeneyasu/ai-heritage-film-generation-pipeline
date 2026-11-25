@@ -19,3 +19,11 @@ Real blockers (quota, memory, consistency, language): what broke, what was tried
 - **What did not add up:** runs.jsonl shows 20 successful TTS calls that same day, so the limit is not enforced as a strict 10 per day. When it actually resets is still to be confirmed by retrying later.
 - **What fixed it:** `call_logged` in `pipeline/common.py` now reads the provider's suggested wait (`retryDelay`). If it is longer than 60 s, it stops at once (`QuotaExhausted`) instead of retrying. The narration stage then saves the lines done so far and exits with a clear message. Error text in runs.jsonl is no longer cut to 300 characters, so the quota details are kept.
 - **Evidence:** runs.jsonl, stage `narration`, shot `s06`, attempts 1–4 with `"status": "error"`.
+
+## F04: First keyframes drifted in identity and got the culture wrong (2026-11-25)
+- **What broke:** the first text-only keyframes showed three men where there should be two, faces that read as Mediterranean, robes and aprons instead of the gabi, European bread rolls, light switches and a lattice window (`docs/evidence/f04_s04_first_attempt.jpg`). The first full set had the younger brother at three different ages, lanterns, bare feet and a village street instead of isolated homesteads (`docs/evidence/f04_keyframes_text_only.jpg`).
+- **What I tried:**
+  - Prompt wording from the author's cultural references: skin and face, the dress and footwear, houses entirely of stone with a thatched ኣጉዶ, moonlight instead of lanterns, the food on the መሶብ, and grandmothers preparing food and ጠላ. Photos the author shared were turned into text; none was sent to the model.
+  - Four rounds of portrait options before the author approved two. The gabi came out as a towel (`docs/evidence/e04_portraits_first_gabi.jpg`), then as a neck scarf when the prompt said "wrapped high around the neck"; trousers were short and shirt and trousers differed in colour; the faces were too comfortable for the period ("weathered, sun-lined" fixed it).
+  - Workers AI accepts at most 2048 characters per prompt. Detailed characters pushed the gathering shot over the limit several times; wording was tightened and the stage refuses to send a prompt that is too long.
+- **What fixed it:** the author's approved portraits plus the two-step keyframes (EXPERIMENTS.md E04).

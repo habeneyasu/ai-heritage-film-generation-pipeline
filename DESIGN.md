@@ -51,27 +51,31 @@ The film shows true love through action rather than words: refusing to celebrate
 
 ## 5. Characters and world (continuity bible)
 
-Both brothers wear a **white gabi**, so other features tell them apart in every shot:
+Both brothers wear the same traditional rural dress, so other features tell them apart in every shot:
 
 | | ወልደቻኣል | ተስፋይ |
 |---|---|---|
-| Age (estimate) | Late fifties; the elder, by about 3 years | Mid-fifties |
-| Beard and hair | Grey beard, grey hair | Dark beard just beginning to grey |
-| In hand | Walking stick | — |
-| Clothing | White gabi | White gabi |
+| Age (estimate) | Late fifties; slightly the elder | Late fifties |
+| Face and skin | Deep brown skin; lean, with a slender, weathered, sun-lined face and work-worn hands (life was harder then) | Same |
+| Beard and hair | Short, tightly curled grey hair; grey beard | Short, tightly curled dark greying hair; dark beard turning grey |
+| In hand | One rough wooden walking stick with a curved crook handle, held in one hand | — |
+| Clothing | Shirt and trousers of the same off-white handwoven cotton: long-sleeved shirt to the knees, full-length trousers to the ankles, loose at the hips and narrow at the ankles; a broad, blanket-like white cotton gabi with a crinkled, layered texture, covering both shoulders and upper arms, its top edge folded loosely around the neck; no head covering | Same |
+| Footwear | Dark grey closed-toe sandals with cut-out openings and a buckled ankle strap; never barefoot, no modern shoes | Same |
 
-*Ages are estimates. Family recollection gives only that ወልደቻኣል was the elder, by roughly 3 years. The ages in the prompts are chosen to give both men a believable look.*
+*Ages are estimates. Family recollection gives only that the brothers were about the same age and ወልደቻኣል was slightly older (roughly 3 years).*
+
+**Grandmothers** (at the gathering): ordinary rural women with weathered faces and work-worn hands, not ceremonial costume. A long white cotton ቀሚሽ to the ankles with long sleeves, a dark woven ጥበብ band running down the front in a V from the neckline and small embroidered crosses on the chest, a white ነጠላ over the shoulders or head, ሹሩባ braided tight on top and fuller at the back and sides, small round earrings, a thin neck cord and practical footwear. They prepare the food and ጠላ.
 
 **Homes:** each brother has the same kind of homestead, and they live the same way of life. The homesteads are approximately **10 km apart** (based on family recollection), and they differ only slightly in size. Each one has:
-- **ህድሞ**: a round house built of stone.
-- **ሳፁን**: a rectangular (four-sided) stone house.
-- **ኣጉዶ**: a kitchen hut roofed with grass.
+- **ህድሞ**: a round house built entirely of stone.
+- **ሳፁን**: a rectangular (four-sided) house built entirely of stone.
+- **ኣጉዶ**: a separate kitchen hut with a grass-thatched roof.
 
-*Continuity: the two homesteads are drawn from one shared description, so they look almost the same. That is deliberate. The distance between them is what separates the brothers, and arriving at near-identical doors again and again strengthens the back-and-forth motif. The passing night (moon, lantern, then dawn) shows the progress, not the houses.*
+*Continuity: the two homesteads are drawn from one shared description, so they look almost the same. That is deliberate. The distance between them is what separates the brothers, and arriving at near-identical doors again and again strengthens the back-and-forth motif. The passing night (dusk, moon, then dawn) shows the progress, not the houses.*
 
 **Place:** the Tigray highlands, with a rocky mountain ridge behind, stone terraces, and dry-stone field walls.
 
-**Gathering objects and food:** ሕምባሻ, milk, honey (መዓር), ኣጅቦ, ጠስሚ, a መሶብ, a ጀበና. At night the light comes from a kerosene lantern and the moon.
+**Gathering objects and food:** one large round እንጀራ covering the መሶብ with small mounds of different ወጥ (meat, red lentil, yellow split peas, greens) and rolled እንጀራ around the edge, ሕምባሻ, milk, honey (መዓር), ኣጅቦ, ጠስሚ and ጠላ, served on a መሶብ, with a ጀበና. The brothers carry no lamp or lantern; at night the only light is the moon.
 
 *The author checked the cultural terms on 2026-11-25: ዓይቢ was corrected to ኣጅቦ, and ጥሕሎ was removed.*
 
@@ -80,24 +84,24 @@ Both brothers wear a **white gabi**, so other features tell them apart in every 
 1. **Style:** cinematic historical realism with natural light, warm earth tones and soft film grain. No cartoon, fantasy or painterly-illustration look.
 2. **Landscape and architecture:** authentic Tigray highlands (rocky ridges, stone terraces, dry-stone walls, sparse trees) and the homestead buildings described above. Nothing invented or from another region.
 3. **Characters:** the same two descriptions from the table above, word for word, in every prompt. Generated against one approved character reference sheet.
-4. **Clothing:** traditional dress only. Both brothers wear the white gabi in every shot.
+4. **Clothing:** traditional rural Tigrayan dress as described above, in every shot; footwear always, never barefoot. No mixing of dress or architecture from other Ethiopian regions.
 5. **Period:** mid-20th century. **No modern elements**: no plastic, metal roofs, power lines, vehicles, phones, modern clothing or printed text.
-6. **Night light:** a kerosene lantern and moonlight only. The sky moves steadily from dusk, through deep night, to dawn across the shots.
+6. **Night light:** moonlight only; no lamps or lanterns. The sky moves steadily from dusk, through deep night, to dawn across the shots.
 
 ## 6. Shot plan (v2, before user test 1)
 
 | # | Shot | Size | Reason it exists | ~s |
 |---|---|---|---|---|
 | 1 | Two similar homesteads (ህድሞ, ሳፁን, ኣጉዶ) far apart across the valley, mountain behind, dusk | Extreme wide | Place, and the distance between the brothers | 6 |
-| 2 | A gathering: food is laid out on the መሶብ and people sit down, but ተስፋይ stays standing and does not celebrate | Medium | Love in action #1: he will not take part without his brother | 6 |
+| 2 | A gathering: እንጀራ, ወጥ and ጠላ on the መሶብ, grandmothers preparing food and ጠላ, people sit down, but ተስፋይ stays standing and does not celebrate | Medium | Love in action #1: he will not take part without his brother | 6 |
 | 3 | ተስፋይ asks the people around him: "ወልደቻኣል ሓወይ ፀውዕዎ"; someone sets off to call him | Close-up | The request: he sends for his brother and waits | 6 |
 | 4 | ወልደቻኣል arrives with his stick; only then does ተስፋይ sit beside him and join the celebration | Wide | The wait ends; they are always together | 6 |
 | 5 | Hands: one brother gives the other a gursha | Close-up insert | Love without words | 5 |
-| 6 | Dusk into night: they leave together under a lantern; ወልደቻኣል walks ተስፋይ home | Wide | The journey begins | 7 |
+| 6 | Dusk into night: they leave together; ወልደቻኣል walks ተስፋይ home | Wide | The journey begins | 7 |
 | 7 | At ተስፋይ's homestead: he will not let his brother go alone and turns back to walk him home | Medium | The loop begins: they take turns | 8 |
 | 8 | At ወልደቻኣል's homestead, the moon high: now ወልደቻኣል turns back to walk ተስፋይ home | Medium | The loop repeats; the night deepens | 9 |
-| 9 | Faces in lantern light on the path: "ተስፋይ ሓወይ!" / "ወልደቻኣል ሓወይ!" | Close-up | The heart of the film | 9 |
-| 10 | The sky pales from night to dawn; the lantern still burns, and they still walk side by side | Wide | Night turns into dawn; they never said goodbye | 9 |
+| 9 | Faces in moonlight on the path: "ተስፋይ ሓወይ!" / "ወልደቻኣል ሓወይ!" | Close-up | The heart of the film | 9 |
+| 10 | The sky pales from night to dawn; they still walk side by side | Wide | Night turns into dawn; they never said goodbye | 9 |
 | 11 | The empty path in full daylight | Extreme wide | The story lives on in those who heard it | 6 |
 | 12 | AI end card (added in code) | — | Required disclosure | 3 |
 
@@ -170,3 +174,5 @@ Subjects are composed in the centre of the frame so that the 9:16 and 16:9 versi
 | 2026-11-25 | Wealth and status made background only; brotherly love and loyalty are the central message | The author's review |
 | 2026-11-25 | Opening sentence: ደጋ replaced with ዶግዓ | The author's correction during the Tigrigna sample check |
 | 2026-11-25 | Wording aligned with storyboard.json: "celebrate" at gatherings; closing line "a story I grew up hearing"; brothers about 3 years apart | The author's review of the narration |
+| 2026-11-25 | s02 line: neither was happy at a gathering without the other, and each sent for his brother; s03 now only the waiting | The author's rewrite of the Tigrigna line |
+| 2026-11-25 | Brothers about the same age; dress, footwear and grandmothers specified; houses entirely stone with a thatched ኣጉዶ; no lanterns (moonlight only); እንጀራ, ወጥ and ጠላ added, with grandmothers preparing food and ጠላ | The author's cultural references, after the first keyframes |

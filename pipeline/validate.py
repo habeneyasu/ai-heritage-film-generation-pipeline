@@ -27,6 +27,11 @@ def check(sb: dict) -> list[str]:
     ids = [s["id"] for s in sb["shots"]]
     if len(ids) != len(set(ids)):
         errors.append("shots: duplicate shot ids")
+    if "reference_sheet" in sb:
+        errors += [f"reference_sheet: unknown character '{c}'" for c in sb["reference_sheet"]["characters"]
+                   if c not in sb["characters"]]
+    errors += [f"characters/{k}: reference file not found: {c['reference']}" for k, c in sb["characters"].items()
+               if "reference" in c and not (ROOT / c["reference"]).exists()]
     cues = {c["id"] for c in sb["music_cues"]}
     for s in sb["shots"]:
         errors += [f"shots/{s['id']}: unknown character '{c}'" for c in s["characters"] if c not in sb["characters"]]
