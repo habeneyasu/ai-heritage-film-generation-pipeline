@@ -5,108 +5,366 @@
   "description": "The contract between all pipeline stages. Each stage reads only this file.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["title", "version", "language", "subtitle_language", "fps", "style_block", "characters", "models", "music_cues", "shots", "end_card"],
+  "required": [
+    "title",
+    "version",
+    "language",
+    "subtitle_language",
+    "fps",
+    "style_block",
+    "characters",
+    "models",
+    "music_cues",
+    "shots",
+    "end_card"
+  ],
   "properties": {
-    "title": { "type": "string", "minLength": 1 },
-    "version": { "type": "integer", "minimum": 1 },
-    "language": { "const": "ti", "description": "Narration language (Tigrigna)." },
-    "subtitle_language": { "const": "en" },
-    "fps": { "const": 24 },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "language": {
+      "const": "ti",
+      "description": "Narration language (Tigrigna)."
+    },
+    "subtitle_language": {
+      "const": "en"
+    },
+    "fps": {
+      "const": 24
+    },
     "style_block": {
-      "type": "string", "minLength": 20,
+      "type": "string",
+      "minLength": 20,
       "description": "Fixed look description appended to every image prompt (DESIGN.md visual rules)."
     },
     "characters": {
-      "type": "object", "minProperties": 1,
+      "type": "object",
+      "minProperties": 1,
       "additionalProperties": {
-        "type": "object", "additionalProperties": false,
-        "required": ["name", "description"],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "description"
+        ],
         "properties": {
-          "name": { "type": "string" },
-          "description": { "type": "string", "minLength": 20, "description": "Used word for word in every prompt where the character appears." }
+          "name": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "description": "How shot prompts refer to the character, e.g. 'the elder brother'."
+          },
+          "description": {
+            "type": "string",
+            "minLength": 20,
+            "description": "Used word for word in every prompt where the character appears."
+          },
+          "reference": {
+            "type": "string",
+            "pattern": "^outputs/references/.+\\.(jpg|png)$",
+            "description": "Approved golden reference portrait; keyframes with this character are conditioned on it."
+          },
+          "close_up": {
+            "type": "string",
+            "minLength": 20,
+            "description": "Face, hair and gabi only; used instead of description in close-up shots so the model does not frame the whole body."
+          },
+          "face_crop": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 4,
+            "maxItems": 4,
+            "description": "[x, y, width, height] of head and shoulders in the reference; close-ups are conditioned on this crop so the full-length pose is not copied."
+          }
         }
       }
     },
     "models": {
-      "type": "object", "additionalProperties": false,
-      "required": ["narration", "keyframes", "shots", "music"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "narration",
+        "keyframes",
+        "shots",
+        "music"
+      ],
       "properties": {
         "narration": {
-          "type": "object", "additionalProperties": false,
-          "required": ["model", "api_version", "voice"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "model",
+            "api_version",
+            "voice"
+          ],
           "properties": {
-            "model": { "type": "string" },
-            "api_version": { "type": "string" },
-            "voice": { "type": "string" },
-            "style": { "type": ["string", "null"], "description": "Optional style instruction prefixed to each line (see EXPERIMENTS.md E02)." }
+            "model": {
+              "type": "string"
+            },
+            "api_version": {
+              "type": "string"
+            },
+            "voice": {
+              "type": "string"
+            },
+            "style": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional style instruction prefixed to each line (see EXPERIMENTS.md E02)."
+            }
           }
         },
-        "keyframes": { "$ref": "#/$defs/model" },
-        "shots": { "$ref": "#/$defs/model" },
-        "music": { "$ref": "#/$defs/model" }
+        "keyframes": {
+          "$ref": "#/$defs/model"
+        },
+        "shots": {
+          "$ref": "#/$defs/model"
+        },
+        "music": {
+          "$ref": "#/$defs/model"
+        }
       }
     },
     "music_cues": {
-      "type": "array", "minItems": 1,
+      "type": "array",
+      "minItems": 1,
       "items": {
-        "type": "object", "additionalProperties": false,
-        "required": ["id", "purpose", "caption", "bpm", "key", "instrumental"],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "purpose",
+          "caption",
+          "bpm",
+          "key",
+          "instrumental"
+        ],
         "properties": {
-          "id": { "$ref": "#/$defs/id" },
-          "purpose": { "type": "string", "description": "What the cue should do emotionally (spotting note)." },
-          "caption": { "type": "string", "minLength": 10, "description": "ACE-Step caption: style, mood, instruments, texture. No tempo or key here." },
-          "bpm": { "type": "integer", "minimum": 40, "maximum": 200 },
-          "key": { "type": "string" },
-          "instrumental": { "type": "boolean" }
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "purpose": {
+            "type": "string",
+            "description": "What the cue should do emotionally (spotting note)."
+          },
+          "caption": {
+            "type": "string",
+            "minLength": 10,
+            "description": "ACE-Step caption: style, mood, instruments, texture. No tempo or key here."
+          },
+          "bpm": {
+            "type": "integer",
+            "minimum": 40,
+            "maximum": 200
+          },
+          "key": {
+            "type": "string"
+          },
+          "instrumental": {
+            "type": "boolean"
+          }
         }
       }
     },
     "shots": {
-      "type": "array", "minItems": 8, "maxItems": 12,
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 12,
       "items": {
-        "type": "object", "additionalProperties": false,
-        "required": ["id", "duration_s", "size", "reason", "characters", "image_prompt", "motion_prompt", "seed", "narration", "music_cue"],
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "duration_s",
+          "size",
+          "reason",
+          "characters",
+          "image_prompt",
+          "motion_prompt",
+          "seed",
+          "narration",
+          "music_cue"
+        ],
         "properties": {
-          "id": { "$ref": "#/$defs/id" },
-          "duration_s": { "type": "number", "minimum": 2, "maximum": 15 },
-          "size": { "enum": ["extreme wide", "wide", "medium", "close-up", "insert"] },
-          "reason": { "type": "string", "minLength": 10, "description": "Why the shot exists." },
-          "characters": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-          "image_prompt": { "type": "string", "minLength": 20, "description": "Scene only; style block and character descriptions are added by the pipeline." },
-          "motion_prompt": { "type": "string", "minLength": 5, "description": "Motion and camera only." },
-          "seed": { "type": "integer", "minimum": 0 },
-          "fallback": { "enum": ["kenburns-in", "kenburns-out", "pan-left", "pan-right"], "description": "Used if image-to-video fails." },
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "duration_s": {
+            "type": "number",
+            "minimum": 2,
+            "maximum": 15
+          },
+          "size": {
+            "enum": [
+              "extreme wide",
+              "wide",
+              "medium",
+              "close-up",
+              "insert"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Why the shot exists."
+          },
+          "characters": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "image_prompt": {
+            "type": "string",
+            "minLength": 20,
+            "description": "Scene only; style block and character descriptions are added by the pipeline."
+          },
+          "motion_prompt": {
+            "type": "string",
+            "minLength": 5,
+            "description": "Motion and camera only."
+          },
+          "seed": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "fallback": {
+            "enum": [
+              "kenburns-in",
+              "kenburns-out",
+              "pan-left",
+              "pan-right"
+            ],
+            "description": "Used if image-to-video fails."
+          },
           "narration": {
-            "type": ["object", "null"], "additionalProperties": false,
-            "required": ["ti", "en"],
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "required": [
+              "ti",
+              "en"
+            ],
             "properties": {
-              "ti": { "type": "string", "minLength": 1, "description": "Tigrigna text spoken by TTS." },
-              "en": { "type": "string", "minLength": 1, "maxLength": 84, "description": "English subtitle (at most 2 lines of about 40 characters)." }
+              "ti": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Tigrigna text spoken by TTS."
+              },
+              "en": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 84,
+                "description": "English subtitle (at most 2 lines of about 40 characters)."
+              }
             }
           },
-          "music_cue": { "type": "string" }
+          "music_cue": {
+            "type": "string"
+          }
         }
       }
     },
     "end_card": {
-      "type": "object", "additionalProperties": false,
-      "required": ["text", "duration_s"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "duration_s"
+      ],
       "properties": {
-        "text": { "type": "string", "minLength": 1 },
-        "duration_s": { "type": "number", "minimum": 2, "maximum": 5 }
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "duration_s": {
+          "type": "number",
+          "minimum": 2,
+          "maximum": 5
+        }
+      }
+    },
+    "reference_sheet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "characters",
+        "prompt",
+        "seeds",
+        "width",
+        "height"
+      ],
+      "description": "Portrait options per main character; one is approved as the golden reference for every keyframe.",
+      "properties": {
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 20,
+          "description": "Framing for the portrait; character description and style block are added by the pipeline."
+        },
+        "seeds": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        }
       }
     }
   },
   "$defs": {
-    "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
     "model": {
-      "type": "object", "additionalProperties": false,
-      "required": ["model"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model"
+      ],
       "properties": {
-        "model": { "type": "string" },
-        "width": { "type": "integer" },
-        "height": { "type": "integer" },
-        "steps": { "type": "integer" }
+        "model": {
+          "type": "string"
+        },
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "steps": {
+          "type": "integer"
+        }
       }
     }
   }
