@@ -6,7 +6,7 @@
 
 A true story passed down in my family, told to me by my father when I was a child. Two brothers, **ወልደቻኣል** (the elder) and **ተስፋይ**, were respected and well established in their community. Their love for each other was shown in what they did:
 
-- **Neither would celebrate at a gathering without the other.** When there was a gathering, whether an official occasion or a simple family one, neither would sit down and take part alone. He would ask the people around him, *"ወልደቻኣል ሓወይ ፀውዕዎ"* / *"ተስፋይ ሓወይ ፀውዕዎ"* ("call my brother"), and wait until his brother arrived. Only then would he join the gathering.
+- **Neither was happy at a gathering unless the other was there.** When there was a gathering, whether an official occasion or a simple family one, neither would sit down and take part alone. He would ask the people around him, *"ወልደቻኣል ሓወይ ፀውዕዎ"* / *"ተስፋይ ሓወይ ፀውዕዎ"* ("call my brother"), and wait until his brother arrived. Only then would he join the gathering.
 - **Neither would let the other walk home alone.** Their homes were approximately 10 km apart (based on family recollection). After a gathering, one walked the other home, and then the other insisted on walking him back. They took turns accompanying each other, and on one night they walked back and forth until the night turned into dawn.
 - They called each other **"ተስፋይ ሓወይ!" / "ወልደቻኣል ሓወይ!"** ("my brother").
 

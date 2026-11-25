@@ -13,3 +13,9 @@ Real blockers (quota, memory, consistency, language): what broke, what was tried
 - **What fixed it:** the retry in `pipeline/common.py` waited 2 s and the second attempt succeeded. Both attempts are logged.
 - **Lesson:** keep TTS calls paced, and generate narration once per changed line (the input-hash cache) rather than re-running everything.
 - **Evidence:** runs.jsonl, stage `narration-sample`, `"status": "error"`, attempt 1, followed by attempt 2 `"status": "ok"`.
+
+## F03: TTS quota used up mid-run; retries wasted requests (2026-11-25)
+- **What broke:** after re-running narration for 5 edited lines, s02 and s03 were generated, then s06 failed 4 times with `429 RESOURCE_EXHAUSTED`. Google's error said the free-tier limit is 10 requests per day for `gemini-3.8-flash-tts` and to retry in about 21 hours.
+- **What did not add up:** runs.jsonl shows 20 successful TTS calls that same day, so the limit is not enforced as a strict 10 per day. When it actually resets is still to be confirmed by retrying later.
+- **What fixed it:** `call_logged` in `pipeline/common.py` now reads the provider's suggested wait (`retryDelay`). If it is longer than 60 s, it stops at once (`QuotaExhausted`) instead of retrying. The narration stage then saves the lines done so far and exits with a clear message. Error text in runs.jsonl is no longer cut to 300 characters, so the quota details are kept.
+- **Evidence:** runs.jsonl, stage `narration`, shot `s06`, attempts 1–4 with `"status": "error"`.
