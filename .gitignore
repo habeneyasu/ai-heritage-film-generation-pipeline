@@ -1,0 +1,21 @@
+# Secrets: never commit
+.env
+.env.*
+!.env.example
+kaggle.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Pipeline scratch (outputs/ itself is committed so runs can be inspected)
+.cache/
+outputs/**/tmp/
+outputs/**/*.part
+
+# Notebooks / editors / OS
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.DS_Store
