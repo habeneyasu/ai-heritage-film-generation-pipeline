@@ -105,7 +105,7 @@ Subjects are composed in the centre of the frame so that the 9:16 and 16:9 versi
 
 ## 7. Early check: Tigrinya narration sample
 
-**Status:** not yet run. This runs **before** the full narration and the radio cut.
+**Status:** run on 2026-11-25 with `gemini-3.8-flash-tts`, voice Sulafat (`uv run python -m pipeline.narration --sample`; see EXPERIMENTS.md E01). **Result: narrate in Tigrigna.**
 
 1. Generate a short sample with Gemini TTS: the two ሓወይ lines and one or two narration sentences that include both names.
 2. A native Tigrinya speaker listens and checks:
@@ -116,7 +116,8 @@ Subjects are composed in the centre of the frame so that the 9:16 and 16:9 versi
 
 | Listener (role, not name) | Pronunciation | Naturalness | Subtitle accuracy | Decision |
 |---|---|---|---|---|
-| | | | | |
+| Author (native Tigrigna speaker) | ወልደቻኣል, ተስፋይ and ሓወይ correct | Natural | "ኣብ ሓንቲ ዓዲ ዶግዓ ትግራይ…" = "In a highland village in Tigray…" matches | Narrate in Tigrigna |
+| Second native speaker | *pending* | | | |
 
 ## 8. User test 1: radio cut (narration over placeholder music, black screen)
 
@@ -165,3 +166,4 @@ Subjects are composed in the centre of the frame so that the 9:16 and 16:9 versi
 | 2026-11-25 | Timing rebalanced within about 80 s: the journey now gets about 42 s | The author's review |
 | 2026-11-25 | Visual consistency rules added; Tigrinya sample check added before the radio cut | The author's review |
 | 2026-11-25 | Wealth and status made background only; brotherly love and loyalty are the central message | The author's review |
+| 2026-11-25 | Opening sentence: ደጋ replaced with ዶግዓ | The author's correction during the Tigrigna sample check |
