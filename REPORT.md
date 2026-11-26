@@ -53,4 +53,4 @@ A close second was making Wan 2.2 run at all on a free 16 GB GPU. It ran out of 
 
 ## Evidence index
 
-DESIGN.md (audience, intent, user tests, change log) · EXPERIMENTS.md (E01–E11) · FAILURES.md (F01–F05) · COSTS.md (calls, latency, GPU minutes, list price) · ETHICS.md (consent, licences, labelling) · ARCHITECTURE.md · runs.jsonl
+DESIGN.md (audience, intent, user tests, change log) · EXPERIMENTS.md (E01–E12) · FAILURES.md (F01–F06) · COSTS.md (calls, latency, GPU minutes, list price) · ETHICS.md (consent, licences, labelling) · ARCHITECTURE.md · runs.jsonl
