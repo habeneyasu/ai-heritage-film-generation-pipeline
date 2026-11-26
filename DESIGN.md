@@ -123,7 +123,7 @@ Subjects are composed in the centre of the frame so that the 9:16 and 16:9 versi
 | Listener (role, not name) | Pronunciation | Naturalness | Subtitle accuracy | Decision |
 |---|---|---|---|---|
 | Author (native Tigrigna speaker) | ወልደቻኣል, ተስፋይ and ሓወይ correct | Natural | "ኣብ ሓንቲ ዓዲ ዶግዓ ትግራይ…" = "In a highland village in Tigray…" matches | Narrate in Tigrigna |
-| Second native speaker | *pending* | | | |
+| Second native speaker | Not done before submission | | | Planned; no second listener was available in time |
 
 ## 8. User test 1: radio cut (narration over placeholder music, black screen)
 

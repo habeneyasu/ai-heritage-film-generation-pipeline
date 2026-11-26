@@ -6,12 +6,12 @@ One entry per experiment. Change one thing at a time and keep the seed fixed whe
 - **Hypothesis:** `gemini-3.8-flash-tts` pronounces Tigrigna, including the names ወልደቻኣል and ተስፋይ, well enough to narrate the film.
 - **Change:** generated two call lines (ተስፋይ ሓወይ! / ወልደቻኣል ሓወይ!) and one opening sentence with both names, voice Sulafat, no style instruction. The sentence was then corrected by the author (ደጋ → ዶግዓ) and regenerated.
 - **Result:** the author, a native Tigrigna speaker, judged the names and ሓወይ correctly pronounced and the speech natural. Audio: 1.4 s, 1.5 s and 8.3 s; latency 2.4–4.1 s per call (runs.jsonl, stage `narration-sample`). Re-running the script skipped the unchanged lines (input-hash cache).
-- **Decision:** narrate in Tigrigna. The Amharic/English fallback is not needed. A second native speaker check is still pending (DESIGN.md section 7).
+- **Decision:** narrate in Tigrigna. The Amharic/English fallback is not needed. A second native-speaker check was planned but not done before submission (DESIGN.md section 7).
 
 ## E02: Does a style instruction improve the narration? (2026-11-25)
 - **Hypothesis:** prefixing "Read in Tigrinya, slowly and warmly, like an elder telling a family story:" makes the voice warmer without changing the words.
 - **Change:** the same opening sentence, same voice, with and without the English style prefix.
-- **Result:** the styled version is about twice as long (15.2 s vs 8.3 s; first attempt 14.0 s vs 6.0 s). *Pending: the author's listening verdict, including whether the English instruction is spoken aloud.*
+- **Result:** the styled version is about twice as long (15.2 s vs 8.3 s; first attempt 14.0 s vs 6.0 s). The author's listening verdict on warmth, and on whether the English instruction is spoken aloud, was not recorded.
 - **Decision:** no style instruction (`"style": null` in storyboard.json). Doubling every line's length would push the film past 90 s: with plain narration it is already 89.5 s once each shot is lengthened to fit its line (E08). The author's listening verdict on warmth was not recorded, so this choice rests on timing, not on preference.
 
 ## E03: Can the keyframes be reproduced from a seed? (2026-11-25)
@@ -38,6 +38,7 @@ One entry per experiment. Change one thing at a time and keep the seed fixed whe
 - **Change:** s09 with "Very slow push-in; moonlight on their faces", then all nine people shots with prompts that keep the camera still and name only small movements ("Static camera, no zoom. The two brothers smile warmly at each other...").
 - **Result:** the push-in was far from slow: by the last of 81 frames the faces filled the frame and the elder brother was half out of shot. With a static camera every clip kept its framing, and the movement went into the people instead: eating and pouring at the gathering, the greeting, one brother feeding the other ጉርሻ, the two heads leaning together in s09.
 - **Decision:** static camera with named subject movement for every Wan shot; camera moves are kept only for the FFmpeg fallback, where they are exact.
+- **Known deviation:** the prompt sent to Wan is the `motion_prompt` followed by the full `image_prompt` (`job_for` in `pipeline/wan.py`), so it re-describes the subject that the keyframe already shows. The brief's tips list this as a common mistake: for image-to-video, motion and camera are enough. In these nine clips it did no visible harm (identity, dress and framing held from the keyframe), and re-running every clip costs about three GPU hours, so the clips were kept. The next Wan run should send the motion prompt alone and be compared shot by shot.
 - **Evidence:** runs.jsonl stage `shots`: s09 at 2026-11-25T19:10 (push-in) and the nine clips pulled at 2026-11-26T03:13 (static); `motion_prompt` in storyboard.json.
 
 ## E06: How do we get a real close-up? (2026-11-25)
@@ -68,10 +69,16 @@ One entry per experiment. Change one thing at a time and keep the seed fixed whe
 - **Hypothesis:** three ACE-Step candidates per cue, with the same caption, tempo and key but different seeds, differ enough to be worth choosing between.
 - **Change:** ACE-Step 1.5 turbo, 8 steps, instrumental, seeds 301–303, 311–313, 321–323; all nine generated in 6.5 minutes on one T4.
 - **Result:** every candidate came back at the exact requested length. They differ clearly in level and dynamics (loudness range): gathering 2.1 / 1.1 / 2.9 LU, journey 5.8 / 7.2 / 13.3 LU, dawn 8.7 / 6.0 / 14.5 LU for candidates 1 / 2 / 3. The author listened and chose candidate 3 for every cue, which is also the most dynamic candidate in each.
-- **Decision:** candidate 3 for gathering, journey and dawn (`chosen` in storyboard.json). *The author's reasons in words are still to be added.*
+- **Decision:** candidate 3 for gathering, journey and dawn (`chosen` in storyboard.json). The author chose by ear; no further reason was written down, so the measured difference above is the only recorded one.
 
 ## E11: Centre crop or per-shot crop for the two formats? (2026-11-25)
 - **Hypothesis:** with subjects centred in every keyframe, a centre crop of the square shot works for both 16:9 and 9:16.
 - **Change:** both crops drawn on all 11 keyframes, then a per-shot `crop` position in the storyboard where the subject was cut.
 - **Result:** the centre crop cut heads in 16:9 (s02, s03, s04, s09, s10 have faces in the top third) and lost ተስፋይ completely from the 9:16 version of s02, the shot whose point is that he stands apart. Eight shots now carry a crop position. In 9:16, s04 and s09 cannot hold both brothers fully; the elder arriving (s04) and the centre of the two faces (s09) were chosen.
 - **Decision:** square masters with a per-shot crop, checked on all 11 shots for both formats.
+
+## E12: Should the edges of the Wan clips be trimmed? (2026-11-26)
+- **Hypothesis:** as the brief's tips warn, many clips have a weak first or last half second, so trimming 0.25 s from each end before slowing them improves the shots.
+- **Change:** looked at frames 0, 4, 72 and 80 of four clips (s04, s05, s07, s09) and measured the frame-to-frame change (FFmpeg `signalstats` YDIF) over the first and last four frames.
+- **Result:** no weak edges. Frame 0 is the approved keyframe itself (image-to-video), and the first frames change smoothly (YDIF 2.8–5.9). The last frames show no flicker, morphing or collapse (YDIF 2.0–8.2) and carry each shot's meaning: the bite of ጉርሻ in s05, the brothers walking back in s07, the heads leaning together in s09. Trimming would also slow every clip further, because each 3.4 s clip is already stretched 1.5 to 2.7 times to fill its shot (5 to 9 s).
+- **Decision:** no trimming. The edges are checked by eye whenever a clip is regenerated.

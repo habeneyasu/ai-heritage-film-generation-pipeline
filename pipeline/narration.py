@@ -10,6 +10,7 @@ which the assembly stage reads.
 import argparse
 import hashlib
 import json
+import os
 import subprocess
 import time
 
@@ -22,7 +23,9 @@ from pipeline.validate import load_storyboard
 
 OUT_DIR = ROOT / "outputs" / "narration"
 MANIFEST = OUT_DIR / "manifest.json"
-PACE_S = 4  # pause between paid-for-nothing calls to stay under the free-tier rate limit (FAILURES.md F02)
+def pace_s() -> float:
+    """Pause between TTS calls for the free-tier rate limit (FAILURES.md F02); TTS_PACE_S in .env overrides it."""
+    return float(os.environ.get("TTS_PACE_S", 4))
 
 # --- Early Tigrigna check (kept so E01 stays reproducible) ---------------------
 SAMPLE_DIR = OUT_DIR / "samples"
@@ -73,7 +76,7 @@ def generate(client, *, model, api_version, voice, text, path, stage, extra=None
     path.write_bytes(audio)
     entry.update(output=str(path.relative_to(ROOT)), audio_s=duration_s(path))
     log_call(**entry)
-    time.sleep(PACE_S)
+    time.sleep(pace_s())
     return {"file": str(path.relative_to(ROOT)), "audio_s": entry["audio_s"], "cached": False}
 
 
