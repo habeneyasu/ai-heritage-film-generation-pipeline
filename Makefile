@@ -7,7 +7,7 @@
 PY := uv run python -m
 SHOTS ?= s02,s03,s04,s05,s06,s07,s08,s09,s10
 
-.PHONY: film validate references keyframes narration shots score assemble radio-cut wan music status docker help
+.PHONY: film validate references keyframes narration shots score assemble radio-cut wan music status help
 
 film: validate references keyframes narration shots score assemble  ## the whole film, 16:9 and 9:16
 
@@ -44,10 +44,6 @@ music:               ## start ACE-Step candidates for every cue on Kaggle
 status:              ## state of both Kaggle jobs
 	-$(PY) pipeline.wan status
 	-$(PY) pipeline.music status
-
-docker:              ## build the image and run `make film` inside it
-	docker build -t heritage-film .
-	docker run --rm -v "$(CURDIR)/outputs:/app/outputs" $(if $(wildcard .env),--env-file .env,) heritage-film
 
 help:
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | sed 's/:.*## /\t/'
