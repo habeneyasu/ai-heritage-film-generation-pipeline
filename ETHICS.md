@@ -20,7 +20,7 @@
 - The public post has the platform's AI-content disclosure label switched on.
 - The post text says the images, motion, music and narration were generated with AI models.
 - **Fictional likeness statement**, in the post text and the README: *"The characters are fictional AI-generated interpretations based on written family recollections. They are not verified historical likenesses."* This keeps viewers from reading the generated faces as authentic photographs.
-- Watermarks and provenance metadata (SynthID, C2PA) from the models are left intact. Nothing is stripped in assembly.
+- Watermarks and provenance metadata are never removed on purpose, and the committed model outputs (images, clips, narration, music) keep whatever the providers attached. But assembly re-encodes everything into one MP4, so file-level provenance (C2PA manifests) does not carry over into the final film, and mixing and compression may weaken signal-level watermarks such as SynthID in Gemini's audio. The film's disclosure therefore rests on the end card, the platform label and the post text above.
 
 ## 3. Licences, provider terms and output rights
 
@@ -31,15 +31,15 @@ Three different things are tracked separately:
 
 An open-source model licence does not by itself guarantee that every generated output is free of third-party rights claims. That is why section 5 adds a review before publication.
 
-*Checked on 2026-11-26 against the model cards and provider terms linked below. "To verify" remains only where the terms we could read do not settle the question.*
+*Checked on 2026-11-26 against the model cards and provider terms linked below. The Kaggle terms were read in full by the author (the page does not load without a browser).*
 
 | Stage | Model / tool | Model licence | Provider terms | Output rights |
 |---|---|---|---|---|
 | Script, translation | None | Not used: the story and the narration were written with the author, not generated | Not applicable | Not applicable |
 | Narration | Gemini 3.8 Flash TTS | Proprietary (API access only) | [Gemini API Additional Terms](https://ai.google.dev/gemini-api/terms); the free tier may use content to improve Google's products (see section 4) | Google "won't claim ownership" of generated content, may generate similar content for others, and makes the user responsible for its use (archived terms of 25 Sep 2025; to re-check against the live page) |
 | Keyframes, references | FLUX.2 klein 4B (FLUX.1 schnell only tested, E03) | Apache 2.0 ([model card](https://huggingface.co/black-forest-labs/FLUX.2-klein-4B)); the 9B version is non-commercial and **is not used** | [Workers AI privacy and data use](https://developers.cloudflare.com/workers-ai/platform/privacy/): inputs and outputs are Customer Content, Cloudflare does not use them to train models | Customer Content: "You own, and are responsible for, your Customer Content"; model licence terms apply between us and the model provider |
-| Moving shots | Wan 2.2 TI2V-5B (Diffusers weights) | Apache 2.0 ([model card](https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B-Diffusers)) | **Kaggle is the provider**: weights downloaded from Hugging Face and run inside a private Kaggle notebook. [Kaggle terms](https://www.kaggle.com/terms): **to verify** for notebook outputs | Apache 2.0 places no restriction on outputs; Kaggle's position on notebook outputs: **to verify** |
-| Music | ACE-Step 1.5 turbo | Code MIT ([GitHub](https://github.com/ace-step/ACE-Step-1.5)); weights tagged MIT on the [model card](https://huggingface.co/ACE-Step/Ace-Step1.5), but the weights repo has no LICENSE file ([open discussion](https://huggingface.co/ACE-Step/Ace-Step1.5/discussions/27)) | **Kaggle is the provider**, as above | The model card says outputs may be used commercially. This is **not** treated as a guarantee of copyright clearance for every track; see the originality check in section 5 |
+| Moving shots | Wan 2.2 TI2V-5B (Diffusers weights) | Apache 2.0 ([model card](https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B-Diffusers)) | **Kaggle is the provider**: weights downloaded from Hugging Face and run inside a private Kaggle notebook. [Kaggle Terms of Use](https://www.kaggle.com/terms) (effective 22 June 2025): the Services may be used only for "your own internal, personal, non-commercial use" | Apache 2.0 places no restriction on outputs. Because the clips were made on Kaggle, the film is shared for **personal, non-commercial** purposes only; any commercial use would need the terms reviewed again. Ownership stays with us: the uploads and notebooks are private ("Personal User Submissions"), and Kaggle's licence is only to operate the service; "your ownership in User Submissions is not affected" (section 9) |
+| Music | ACE-Step 1.5 turbo | Code MIT ([GitHub](https://github.com/ace-step/ACE-Step-1.5)); weights tagged MIT on the [model card](https://huggingface.co/ACE-Step/Ace-Step1.5), but the weights repo has no LICENSE file ([open discussion](https://huggingface.co/ACE-Step/Ace-Step1.5/discussions/27)) | **Kaggle is the provider**, as above (personal, non-commercial use) | The model card says outputs may be used commercially, but because they were made on Kaggle we treat them as personal, non-commercial. This is **not** treated as a guarantee of copyright clearance for every track; see the originality check in section 5 |
 | Assembly | FFmpeg | LGPL / GPL (tool only) | Not applicable (runs locally) | Not applicable |
 
 ## 4. Private data

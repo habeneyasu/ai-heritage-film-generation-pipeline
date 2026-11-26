@@ -38,6 +38,8 @@ There is no separate script stage. The story and the narration were written with
 
 **The storyboard is the only place prompts, seeds and settings live.** No prompt is hidden in code. Each stage reads it through `load_storyboard()`, which refuses an invalid file, so a typo stops the run before it costs a model call.
 
+**Where each setting lives.** Everything that shapes the film is in `storyboard.json`: models, sizes, steps, voice, prompts, seeds, crops, music cues, and the `edit` (lead-in, tail, crossfade, camera-move zoom) and `mix` (loudness target, music bed level, ducking) blocks. `.env` holds only what must not be committed or only changes how the pipeline runs on one machine: API keys, and the optional `TTS_PACE_S` and `KAGGLE_ACCELERATOR`. So two people with the same storyboard get the same film, whatever their `.env` says.
+
 **Caching by input hash.** A file like `s04_846bae35.jpg` is named after everything that produced it. If the file exists, the stage skips the call. This makes re-runs free and the walkthrough's "change one shot, regenerate only that shot" automatic. It also replaces exact seeds, which Cloudflare's klein does not honour (EXPERIMENTS.md E03).
 
 **Consistency comes from references, in two steps.** Approved portraits of the brothers are the golden references. Each keyframe is made first from text (setting, people, poses), then edited so the brothers match their portraits. Close-ups use a head-and-shoulders crop so the full-length pose is not copied (EXPERIMENTS.md E04).

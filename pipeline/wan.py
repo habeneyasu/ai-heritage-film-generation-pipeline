@@ -12,6 +12,7 @@ clip that matches the current keyframe and prompt. Needs KAGGLE_API_TOKEN in .en
 import argparse
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import time
@@ -35,6 +36,11 @@ def kaggle(*args: str, capture: bool = False) -> str:
     if r.returncode != 0:
         raise SystemExit(f"kaggle {' '.join(args)} failed:\n{r.stderr if capture else ''}")
     return r.stdout if capture else ""
+
+
+def accelerator() -> str:
+    """Kaggle GPU type; KAGGLE_ACCELERATOR in .env overrides the free-tier default (2× Tesla T4)."""
+    return os.environ.get("KAGGLE_ACCELERATOR", "NvidiaTeslaT4")
 
 
 def username() -> str:
@@ -97,7 +103,7 @@ def push(only: set[str]) -> None:
         "id": f"{user}/{KERNEL}", "title": KERNEL, "code_file": SCRIPT.name, "language": "python",
         "kernel_type": "script", "is_private": True, "enable_gpu": True, "enable_internet": True,
         "dataset_sources": [f"{user}/{DATASET}"]}), encoding="utf-8")
-    kaggle("kernels", "push", "-p", str(code), "--accelerator", "NvidiaTeslaT4")
+    kaggle("kernels", "push", "-p", str(code), "--accelerator", accelerator())
     print(f"Started {len(jobs)} clip(s): {', '.join(j['shot'] for j in jobs)}. Check with: python -m pipeline.wan status")
 
 

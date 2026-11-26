@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 from pipeline.assemble import timeline
 from pipeline.common import ROOT, log_call
 from pipeline.validate import load_storyboard
-from pipeline.wan import kaggle, username
+from pipeline.wan import accelerator, kaggle, username
 
 OUT_DIR = ROOT / "outputs" / "music"
 CANDIDATES = OUT_DIR / "candidates"
@@ -29,7 +29,6 @@ SCRIPT = ROOT / "notebooks" / "music_cues.py"
 KERNEL = "heritage-film-music"
 REPO = "https://github.com/ace-step/ACE-Step-1.5.git"
 CANDIDATES_PER_CUE = 3
-XFADE_S = 3.0
 
 
 def cue_spans(sb: dict) -> list[dict]:
@@ -52,7 +51,7 @@ def push() -> None:
     jobs = {"repo": REPO, "dit": "acestep-v15-turbo", "cues": []}
     for n, span in enumerate(cue_spans(sb)):
         c = cues[span["id"]]
-        length = round(span["end"] - span["start"] + 2 * XFADE_S)  # room for the crossfades
+        length = round(span["end"] - span["start"] + 2 * sb["edit"]["music_crossfade_s"])  # room for the crossfades
         jobs["cues"].append({"id": c["id"], "caption": c["caption"], "bpm": c["bpm"], "key": c["key"],
                              "duration": max(10, length), "seeds": [300 + 10 * n + i for i in range(1, CANDIDATES_PER_CUE + 1)]})
     shutil.rmtree(BUILD, ignore_errors=True)
@@ -62,7 +61,7 @@ def push() -> None:
     (BUILD / "kernel-metadata.json").write_text(json.dumps({
         "id": f"{username()}/{KERNEL}", "title": KERNEL, "code_file": SCRIPT.name, "language": "python",
         "kernel_type": "script", "is_private": True, "enable_gpu": True, "enable_internet": True}))
-    kaggle("kernels", "push", "-p", str(BUILD), "--accelerator", "NvidiaTeslaT4")
+    kaggle("kernels", "push", "-p", str(BUILD), "--accelerator", accelerator())
     for c in jobs["cues"]:
         print(f"{c['id']}: {c['duration']}s, {c['bpm']} bpm, {c['key']}, seeds {c['seeds']}")
 
@@ -96,17 +95,18 @@ def score() -> None:
     sb = load_storyboard()
     chosen = {c["id"]: c.get("chosen") for c in sb["music_cues"]}
     spans = cue_spans(sb)
+    xfade = sb["edit"]["music_crossfade_s"]
     missing = [s["id"] for s in spans if not chosen[s["id"]]]
     if missing:
         raise SystemExit(f"Set \"chosen\" (1-{CANDIDATES_PER_CUE}) on music cues {missing} in storyboard.json")
     inputs, chains = [], []
     for i, s in enumerate(spans):
         inputs += ["-i", str(CANDIDATES / f"{s['id']}_{chosen[s['id']]}.wav")]
-        start = max(0.0, s["start"] - (XFADE_S if i else 0))
-        length = s["end"] - start + (XFADE_S if i < len(spans) - 1 else 0)
-        fade_in = f"afade=t=in:d={XFADE_S}," if i else "afade=t=in:d=2,"
+        start = max(0.0, s["start"] - (xfade if i else 0))
+        length = s["end"] - start + (xfade if i < len(spans) - 1 else 0)
+        fade_in = f"afade=t=in:d={xfade}," if i else "afade=t=in:d=2,"
         chains.append(f"[{i}:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{length:.2f},asetpts=PTS-STARTPTS,"
-                      f"{fade_in}afade=t=out:st={length - XFADE_S:.2f}:d={XFADE_S},adelay={int(start * 1000)}|{int(start * 1000)}[c{i}]")
+                      f"{fade_in}afade=t=out:st={length - xfade:.2f}:d={xfade},adelay={int(start * 1000)}|{int(start * 1000)}[c{i}]")
     graph = ";".join(chains) + ";" + "".join(f"[c{i}]" for i in range(len(spans))) + \
         f"amix=inputs={len(spans)}:normalize=0:duration=longest[out]"
     out = OUT_DIR / "score.wav"

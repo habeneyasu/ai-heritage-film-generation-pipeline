@@ -16,7 +16,9 @@
     "models",
     "music_cues",
     "shots",
-    "end_card"
+    "end_card",
+    "edit",
+    "mix"
   ],
   "properties": {
     "title": {
@@ -359,6 +361,92 @@
         },
         "height": {
           "type": "integer"
+        }
+      }
+    },
+    "edit": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "How the cut is timed and how stills move (assembly and the camera-move fallback).",
+      "required": [
+        "lead_in_s",
+        "tail_s",
+        "music_crossfade_s",
+        "camera_move_zoom"
+      ],
+      "properties": {
+        "lead_in_s": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Pause at the start of a shot before the narrator speaks."
+        },
+        "tail_s": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Room after a line before the cut; a shot is lengthened to fit its line."
+        },
+        "music_crossfade_s": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Crossfade where one music cue hands over to the next."
+        },
+        "camera_move_zoom": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 1.5,
+          "description": "How far a fallback push-in, pull-out or pan moves."
+        }
+      }
+    },
+    "mix": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Sound: loudness target, how far the score sits under the voice, and the sidechain ducking.",
+      "required": [
+        "lufs",
+        "true_peak_db",
+        "lra",
+        "music_gain_db",
+        "duck"
+      ],
+      "properties": {
+        "lufs": {
+          "type": "number"
+        },
+        "true_peak_db": {
+          "type": "number"
+        },
+        "lra": {
+          "type": "number"
+        },
+        "music_gain_db": {
+          "type": "number",
+          "maximum": 0,
+          "description": "Score level under the voice before ducking."
+        },
+        "duck": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "threshold",
+            "ratio",
+            "attack_ms",
+            "release_ms"
+          ],
+          "properties": {
+            "threshold": {
+              "type": "number"
+            },
+            "ratio": {
+              "type": "number"
+            },
+            "attack_ms": {
+              "type": "number"
+            },
+            "release_ms": {
+              "type": "number"
+            }
+          }
         }
       }
     }

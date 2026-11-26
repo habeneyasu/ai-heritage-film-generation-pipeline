@@ -25,21 +25,20 @@ OUT_DIR = ROOT / "outputs" / "shots"
 WAN_DIR = OUT_DIR / "wan"
 MANIFEST = OUT_DIR / "manifest.json"
 SIZE = 1024       # output square, same as the keyframes
-ZOOM = 1.12       # how far a push-in / pull-out / pan moves: slow and gentle
 WORK = 4          # zoompan works on an image this many times larger, to avoid jitter
 
-MOVES = {  # zoom and top-left x as functions of t (0 -> 1); y keeps the frame centred
-    "kenburns-in": (f"1+{ZOOM - 1}*T", "(iw-iw/zoom)/2"),
-    "kenburns-out": (f"{ZOOM}-{ZOOM - 1}*T", "(iw-iw/zoom)/2"),
-    "pan-left": (f"{ZOOM}", "(iw-iw/zoom)*(1-T)"),
-    "pan-right": (f"{ZOOM}", "(iw-iw/zoom)*T"),
-}
+def moves(zoom: float) -> dict:
+    """Zoom and top-left x as functions of T (0 -> 1); y keeps the frame centred. `zoom` comes from storyboard.json."""
+    return {"kenburns-in": (f"1+{zoom - 1}*T", "(iw-iw/zoom)/2"),
+            "kenburns-out": (f"{zoom}-{zoom - 1}*T", "(iw-iw/zoom)/2"),
+            "pan-left": (f"{zoom}", "(iw-iw/zoom)*(1-T)"),
+            "pan-right": (f"{zoom}", "(iw-iw/zoom)*T")}
 
 
-def fallback_clip(keyframe, move: str, duration: float, fps: int, out) -> None:
+def fallback_clip(keyframe, move: str, duration: float, fps: int, zoom: float, out) -> None:
     frames = round(duration * fps)
     t = f"(on/{max(frames - 1, 1)})"
-    z, x = (expr.replace("T", t) for expr in MOVES[move])
+    z, x = (expr.replace("T", t) for expr in moves(zoom)[move])
     vf = (f"scale={SIZE * WORK}:{SIZE * WORK},"
           f"zoompan=z='{z}':x='{x}':y='(ih-ih/zoom)/2':d={frames}:s={SIZE}x{SIZE}:fps={fps},"
           f"format=yuv420p")
@@ -82,11 +81,11 @@ def run(only: set[str] | None) -> None:
             print(f"{shot['id']}  {out.relative_to(ROOT)}  (wan, {'cached' if cached else 'conformed'})")
             continue
         move = shot.get("fallback", "kenburns-in")
-        key = f"{hashlib.sha256(keyframe.read_bytes()).hexdigest()[:16]}|{move}|{shot['duration_s']}|{sb['fps']}|{SIZE}|{ZOOM}"
+        key = f"{hashlib.sha256(keyframe.read_bytes()).hexdigest()[:16]}|{move}|{shot['duration_s']}|{sb['fps']}|{SIZE}|{sb['edit']['camera_move_zoom']}"
         out = OUT_DIR / f"{shot['id']}_{hashlib.sha256(key.encode()).hexdigest()[:8]}.mp4"
         cached = out.exists()
         if not cached:
-            fallback_clip(keyframe, move, shot["duration_s"], sb["fps"], out)
+            fallback_clip(keyframe, move, shot["duration_s"], sb["fps"], sb["edit"]["camera_move_zoom"], out)
         manifest[shot["id"]] = {"file": str(out.relative_to(ROOT)), "source": f"fallback:{move}"}
         print(f"{shot['id']}  {out.relative_to(ROOT)}  ({move}, {'cached' if cached else 'rendered'})")
     order = [s["id"] for s in sb["shots"]]
