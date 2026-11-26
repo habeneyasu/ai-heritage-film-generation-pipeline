@@ -42,7 +42,7 @@ The film shows true love through action rather than words: refusing to celebrate
 | Narration language | **Tigrigna** | It is the brothers' language; the call ሓወይ only works in Tigrigna. If Gemini TTS handles Tigrigna badly, the fallback is Amharic or English narration with the ሓወይ lines kept in Tigrigna, and the failure goes in FAILURES.md. |
 | Narration framing | A generic, passed-down voice ("in a highland village in Tigray, there lived two brothers, ወልደቻኣል and ተስፋይ…"), not as a named family relation. The names are kept; the last line says it is a story I grew up hearing. | The film reaches anyone as a timeless story and reveals fewer family details. The family relation is recorded only in ETHICS.md, for consent. |
 | Narrator voice | Gemini TTS voice, not a cloned voice | No real person's voice is replicated (see ETHICS.md) |
-| Subtitles | English, burned in, at most 2 lines and about 40 characters | Makes the film understandable to anyone; kept inside the 9:16 safe area |
+| Subtitles | English, burned in, one sentence per subtitle and at most 2 lines; a longer line is split into two timed subtitles in code (EXPERIMENTS.md E13) | Makes the film understandable to anyone; kept inside the 9:16 safe area |
 | Text in images | None; all titles and text are added in code | Image models garble the Ge'ez script |
 | Region | Kept vague ("a highland village in Tigray") | Privacy |
 | Era | Approximately mid-20th century | Based on family recollection |
@@ -196,3 +196,4 @@ Subjects are composed in the centre of the frame so that the 9:16 and 16:9 versi
 | 2026-11-25 | Wan motion prompts rewritten as static camera with small natural movement; Wan clips replace camera moves for s02–s10; placeholder drone to be replaced by an ACE-Step score | User test 1 (general feedback: natural, but the storyboard needs more exact information) |
 | 2026-11-26 | Narration sets the cut: a shot lasts at least as long as its line (s01 8.1 s, s02 12.1 s, s11 7.3 s; total 89.5 s); per-shot crop for 16:9 and 9:16; ACE-Step candidate 3 chosen for each cue | Radio cut timing (s02 started 1.4 s late), the crop check on all 11 shots, and the author's listening |
 | 2026-11-26 | Faces (skin, hair texture, face shape), distinct dress per brother with shirt and trousers that differ, inner walls plastered with earthen render; approved portraits cleared (branch `feat/test2-storyboard`, not rendered yet) | User test 2 (two viewers) |
+| 2026-11-26 | Subtitles: one sentence per subtitle and at most 60 characters, split in code; s01, s02, s07, s08, s09 and s11 now show as two subtitles each | Final check of the 9:16 cut: three subtitles wrapped to three lines (EXPERIMENTS.md E13) |

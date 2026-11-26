@@ -82,3 +82,9 @@ One entry per experiment. Change one thing at a time and keep the seed fixed whe
 - **Change:** looked at frames 0, 4, 72 and 80 of four clips (s04, s05, s07, s09) and measured the frame-to-frame change (FFmpeg `signalstats` YDIF) over the first and last four frames.
 - **Result:** no weak edges. Frame 0 is the approved keyframe itself (image-to-video), and the first frames change smoothly (YDIF 2.8–5.9). The last frames show no flicker, morphing or collapse (YDIF 2.0–8.2) and carry each shot's meaning: the bite of ጉርሻ in s05, the brothers walking back in s07, the heads leaning together in s09. Trimming would also slow every clip further, because each 3.4 s clip is already stretched 1.5 to 2.7 times to fill its shot (5 to 9 s).
 - **Decision:** no trimming. The edges are checked by eye whenever a clip is regenerated.
+
+## E13: Do the subtitles fit in two lines in 9:16? (2026-11-26)
+- **Hypothesis:** the schema's limit of 84 characters per subtitle (two lines of about 42) keeps every subtitle to two lines in both formats.
+- **Change:** one frame per subtitle from both final films, checked by eye.
+- **Result:** 16:9 is fine. In 9:16, s01 (81 characters), s02 (84), s08 (62) and s11 (72) wrapped to three lines, while s07 (63) fitted in two, so the limit depends on the words, not only the count. s09's two calls also broke in the middle of a quote ("…Tesfay!" "My / brother…").
+- **Decision:** `split_cue` in `pipeline/assemble.py` gives one sentence per subtitle and splits any subtitle over 60 characters at the comma or semicolon nearest the middle, each half on screen in proportion to its length. Rechecked on every subtitle of the 9:16 film: all are one or two lines, and s09 shows the two calls one after the other, as they are spoken. The end card stays three lines in 9:16; it is a still card on black, not a subtitle over the picture.
