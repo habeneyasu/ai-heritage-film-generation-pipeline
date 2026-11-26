@@ -2,6 +2,7 @@
 
 import datetime
 import json
+import os
 import pathlib
 import re
 import time
@@ -9,6 +10,14 @@ import time
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 RUNS = ROOT / "runs.jsonl"
 MAX_WAIT_S = 60  # if the provider asks us to wait longer than this, stop instead of retrying (FAILURES.md F03)
+
+
+def require_env(*keys: str) -> None:
+    """Stop with a clear message if an API key is missing. Called only when a model call is needed,
+    so a fully cached run (every output already committed) needs no keys at all."""
+    missing = [k for k in keys if not os.environ.get(k)]
+    if missing:
+        raise SystemExit(f"Set {', '.join(missing)} in .env (see .env.example); needed to generate new outputs")
 
 
 class QuotaExhausted(RuntimeError):

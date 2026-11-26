@@ -1,0 +1,8 @@
+.env
+.env.*
+!.env.example
+.venv/
+.cache/
+.git/
+__pycache__/
+AI-Content Generation Scenario.md

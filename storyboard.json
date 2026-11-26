@@ -67,7 +67,12 @@
       "steps": 4
     },
     "shots": {
-      "model": "Wan-AI/Wan2.2-TI2V-5B"
+      "model": "Wan-AI/Wan2.2-TI2V-5B-Diffusers",
+      "width": 704,
+      "height": 704,
+      "frames": 81,
+      "steps": 30,
+      "guidance": 5.0
     },
     "music": {
       "model": "ACE-Step 1.5"
@@ -80,7 +85,8 @@
       "caption": "traditional Ethiopian krar, soft masenqo, gentle hand percussion, warm, intimate, acoustic, sparse texture, no strong lead melody",
       "bpm": 72,
       "key": "A minor",
-      "instrumental": true
+      "instrumental": true,
+      "chosen": 3
     },
     {
       "id": "journey",
@@ -88,7 +94,8 @@
       "caption": "slow walking rhythm, soft repeating krar motif, low gentle drone, night atmosphere, tender, hypnotic, acoustic, sparse",
       "bpm": 66,
       "key": "A minor",
-      "instrumental": true
+      "instrumental": true,
+      "chosen": 3
     },
     {
       "id": "dawn",
@@ -96,7 +103,8 @@
       "caption": "the krar motif returns brighter, rising masenqo melody, hopeful, warm, resolved, acoustic, gentle",
       "bpm": 66,
       "key": "A major",
-      "instrumental": true
+      "instrumental": true,
+      "chosen": 3
     }
   ],
   "shots": [
@@ -114,7 +122,10 @@
         "ti": "ኣብ ሓንቲ ዓዲ ዶግዓ ትግራይ፡ ወልደቻኣልን ተስፋይን ዝበሃሉ ክልተ ኣሕዋት ይነብሩ ነበሩ።",
         "en": "In a highland village in Tigray, there lived two brothers, Weldechael and Tesfay."
       },
-      "music_cue": "gathering"
+      "music_cue": "gathering",
+      "crop": {
+        "x": 0.2
+      }
     },
     {
       "id": "s02",
@@ -126,14 +137,18 @@
         "grandmothers"
       ],
       "image_prompt": "Medium shot of a family gathering in a stone house: a tall handwoven mesob basket table with coloured patterns, lid set aside, laid with a large round injera covering the mesob with small mounds of meat wot, red lentil wot, yellow split peas and cooked greens, rolled injera around the edge, himbasha bread, honey, cheese, a jebena and cups of tela; men and women seated around it; behind them the grandmothers prepare food and pour tela; one man stands apart near the doorway, waiting.",
-      "motion_prompt": "Locked-off camera; the seated people settle and the grandmothers work while the standing man waits.",
+      "motion_prompt": "Static camera, no zoom. The seated relatives eat and talk gently, a grandmother pours tela, and the man standing by the doorway waits and glances outside.",
       "seed": 102,
       "fallback": "kenburns-in",
       "narration": {
         "ti": "ኣብ ዝኾነ ማሕበራዊ ጉዳይ ወይ ምትእኽኻብ፡ እቲ ሓደ ብዘይካ እቲ ሓደ ደስ ኣይብሎን፡ ስለዝኾነ ድማ ወልደቻኣል «ተስፋይ ሓወይ ፀዉዕዎ» ይብል፡ ተስፋይ እውን ከምኡ።",
         "en": "Neither was happy at a gathering without the other; each would send for his brother."
       },
-      "music_cue": "gathering"
+      "music_cue": "gathering",
+      "crop": {
+        "x": 1.0,
+        "y": 0.2
+      }
     },
     {
       "id": "s03",
@@ -144,14 +159,17 @@
         "tesfay"
       ],
       "image_prompt": "Close-up of the man turning to the people around him and speaking, gesturing gently toward the open door, soft daylight from the doorway.",
-      "motion_prompt": "Slight push-in on his face as he speaks.",
+      "motion_prompt": "Static camera, no zoom. He turns to the people beside him and speaks, gesturing gently toward the open door.",
       "seed": 103,
       "fallback": "kenburns-in",
       "narration": {
         "ti": "ክሳዕ ሓዉ ዝመጽእ ድማ ይጽበ ነይሩ።",
         "en": "And he would wait until his brother came."
       },
-      "music_cue": "gathering"
+      "music_cue": "gathering",
+      "crop": {
+        "y": 0.15
+      }
     },
     {
       "id": "s04",
@@ -163,14 +181,18 @@
         "tesfay"
       ],
       "image_prompt": "Wide shot inside the stone house: the elder brother arrives through the doorway with his walking stick and the younger brother rises to greet him beside a tall handwoven mesob basket table with coloured patterns, its conical lid set aside, laid with a large round injera with small mounds of wot, himbasha bread, honey and cups of tela.",
-      "motion_prompt": "Slow pan following the elder brother as he enters and sits.",
+      "motion_prompt": "Static camera, no zoom. The elder brother steps in through the doorway with his walking stick and the younger brother greets him warmly.",
       "seed": 104,
       "fallback": "pan-right",
       "narration": {
         "ti": "ሓዉ ምስ መጸ ጥራይ እዩ ዘብዕል ነይሩ።",
         "en": "Only when his brother arrived would he join the celebration."
       },
-      "music_cue": "gathering"
+      "music_cue": "gathering",
+      "crop": {
+        "x": 0.62,
+        "y": 0.25
+      }
     },
     {
       "id": "s05",
@@ -182,7 +204,7 @@
         "tesfay"
       ],
       "image_prompt": "Close-up insert of hands: one man's hand gently feeding the other man a rolled bite of injera with meat wot by hand (gursha), warm light, the mesob with a large round injera and small mounds of wot softly out of focus behind.",
-      "motion_prompt": "Static camera; the hands move slowly.",
+      "motion_prompt": "Static camera, no zoom. One hand slowly lifts a rolled bite of injera toward the other man; small natural hand movements.",
       "seed": 105,
       "fallback": "kenburns-in",
       "narration": {
@@ -201,14 +223,17 @@
         "tesfay"
       ],
       "image_prompt": "Wide shot at dusk turning to night, lit only by the fading sky and the rising moon: the two brothers walk side by side on a stone path through the open highlands, the homestead behind them.",
-      "motion_prompt": "Camera tracks slowly alongside the walking brothers; the last light fades from the sky.",
+      "motion_prompt": "Steady camera, no zoom. The two brothers walk slowly side by side along the stone path as dusk fades; their gabis move slightly.",
       "seed": 106,
       "fallback": "pan-left",
       "narration": {
         "ti": "ምሸት ምስ ኮነ፡ ወልደቻኣል ንተስፋይ ክሳዕ ገዝኡ ይሰንዮ።",
         "en": "When night fell, Weldechael walked Tesfay home."
       },
-      "music_cue": "journey"
+      "music_cue": "journey",
+      "crop": {
+        "y": 0.55
+      }
     },
     {
       "id": "s07",
@@ -220,14 +245,17 @@
         "tesfay"
       ],
       "image_prompt": "Medium shot at night in bright moonlight by the door of an isolated stone homestead in open countryside, no neighbouring houses: the younger brother turns back toward the path beside his elder brother.",
-      "motion_prompt": "Locked-off camera; the younger brother turns and steps back onto the path.",
+      "motion_prompt": "Static camera, no zoom. In the moonlight the younger brother turns back toward the path beside his elder brother; slow natural movement.",
       "seed": 107,
       "fallback": "kenburns-out",
       "narration": {
         "ti": "ተስፋይ ግን ሓዉ ንበይኑ ክምለስ ኣይፈቐደን፤ መሊሱ ሰነዮ።",
         "en": "But Tesfay would not let him return alone, and walked him back."
       },
-      "music_cue": "journey"
+      "music_cue": "journey",
+      "crop": {
+        "y": 0.45
+      }
     },
     {
       "id": "s08",
@@ -239,7 +267,7 @@
         "tesfay"
       ],
       "image_prompt": "Medium shot later at night, the moon high: at the door of the other near-identical isolated stone homestead in open countryside, the elder brother turns back to walk with the younger brother again, moonlight only.",
-      "motion_prompt": "Locked-off camera; the elder brother turns and steps back onto the path.",
+      "motion_prompt": "Static camera, no zoom. In the moonlight the elder brother turns back toward the path to walk with the younger brother again; slow natural movement.",
       "seed": 108,
       "fallback": "kenburns-out",
       "narration": {
@@ -258,14 +286,17 @@
         "tesfay"
       ],
       "image_prompt": "Tight close-up, heads and shoulders only, the two faces fill the frame: the two brothers side by side in soft moonlight on the path at night, both smiling with deep affection.",
-      "motion_prompt": "Very slow push-in; moonlight on their faces.",
+      "motion_prompt": "Static camera, no zoom. The two brothers smile warmly at each other in the moonlight; subtle natural movement of faces and breathing.",
       "seed": 109,
       "fallback": "kenburns-in",
       "narration": {
         "ti": "«ተስፋይ ሓወይ!» «ወልደቻኣል ሓወይ!»",
         "en": "\"My brother, Tesfay!\" \"My brother, Weldechael!\""
       },
-      "music_cue": "journey"
+      "music_cue": "journey",
+      "crop": {
+        "y": 0.35
+      }
     },
     {
       "id": "s10",
@@ -277,14 +308,17 @@
         "tesfay"
       ],
       "image_prompt": "Wide shot at first light: the sky pales from deep blue to soft dawn over the mountain ridge; the two brothers still walk side by side on the stone path.",
-      "motion_prompt": "Slow tilt up from the walking brothers to the brightening sky.",
+      "motion_prompt": "Steady camera, no zoom. The two brothers keep walking slowly side by side on the stone path as the dawn sky brightens.",
       "seed": 110,
       "fallback": "pan-right",
       "narration": {
         "ti": "ከምኡ እናበሉ ለይቲ ምሉእ ክሳዕ ወጋሕታ ክመላለሱ ሓደሩ፡ ።",
         "en": "And so they walked back and forth all night, until dawn."
       },
-      "music_cue": "dawn"
+      "music_cue": "dawn",
+      "crop": {
+        "y": 0.55
+      }
     },
     {
       "id": "s11",

@@ -127,7 +127,7 @@ Subjects are composed in the centre of the frame so that the 9:16 and 16:9 versi
 
 ## 8. User test 1: radio cut (narration over placeholder music, black screen)
 
-**Status:** not yet run.
+**Status:** run informally on 2026-11-25; **no structured answers were collected.** The result below is recorded as an assumption, not as audience evidence.
 
 **Plan:** at least 3 people, in person or on Slack, including at least one Tigrigna speaker (to check the narration and names) and at least one non-Tigrigna speaker (to check the story through the subtitles alone). Questions:
 1. In one sentence, what was the story about?
@@ -138,13 +138,27 @@ Subjects are composed in the centre of the frame so that the 9:16 and 16:9 versi
 
 | Person (role, not name) | What they said | Insight |
 |---|---|---|
-| | | |
+| Viewer 1 | "It's good" (no answers to the questions) | Not enough to learn from |
+| Viewer 2 | "It's good" (no answers to the questions) | Not enough to learn from |
+| Viewer 3 | "It's good" (no answers to the questions) | Not enough to learn from |
+| The author (native Tigrigna speaker) | It looks natural, but the storyboard needs more exact information | The main finding of this round |
 
-**What changed in the storyboard because of it:** —
+**Assumption:** the story and narration work well enough to continue. It rests on three short "it's good" replies and the author's own review, not on answers to the questions above. User test 2 uses a written questionnaire so that the answers can be recorded.
+
+**General feedback:** the film feels natural; what it needs is more exact information in the storyboard, so that what is generated matches how life really was, rather than the model's guess.
+
+**What changed because of it:** the storyboard was made more exact throughout, from the author's cultural references:
+- Characters: about the same age, deep brown skin, weathered faces, dress described piece by piece (shirt, trousers, gabi, sandals), one walking stick for the elder only.
+- World: houses entirely of stone with a thatched ኣጉዶ, homesteads far apart, moonlight only (no lanterns), the food on the መሶብ, grandmothers preparing food and ጠላ.
+- Motion: every Wan `motion_prompt` states exactly what moves and keeps the camera still, instead of a general camera move.
+- Framing: a per-shot `crop` keeps the subject in both the 16:9 and 9:16 versions.
+- Music: three ACE-Step candidates per cue replace the placeholder, chosen by listening.
 
 ## 9. User test 2: near-final cut
 
 **Status:** not yet run.
+
+**Plan:** the near-final 9:16 film, sent with a written questionnaire so every answer is recorded: the five questions in section 8, plus "one thing you would change". At least 3 people, including a Tigrigna speaker and a non-Tigrigna speaker.
 
 | Person (role, not name) | What they said | Insight |
 |---|---|---|
@@ -176,3 +190,4 @@ Subjects are composed in the centre of the frame so that the 9:16 and 16:9 versi
 | 2026-11-25 | Wording aligned with storyboard.json: "celebrate" at gatherings; closing line "a story I grew up hearing"; brothers about 3 years apart | The author's review of the narration |
 | 2026-11-25 | s02 line: neither was happy at a gathering without the other, and each sent for his brother; s03 now only the waiting | The author's rewrite of the Tigrigna line |
 | 2026-11-25 | Brothers about the same age; dress, footwear and grandmothers specified; houses entirely stone with a thatched ኣጉዶ; no lanterns (moonlight only); እንጀራ, ወጥ and ጠላ added, with grandmothers preparing food and ጠላ | The author's cultural references, after the first keyframes |
+| 2026-11-25 | Wan motion prompts rewritten as static camera with small natural movement; Wan clips replace camera moves for s02–s10; placeholder drone to be replaced by an ACE-Step score | User test 1 (general feedback: natural, but the storyboard needs more exact information) |

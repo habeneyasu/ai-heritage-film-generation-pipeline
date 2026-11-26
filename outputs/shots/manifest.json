@@ -1,0 +1,46 @@
+{
+  "s01": {
+    "file": "outputs/shots/s01_c2edd972.mp4",
+    "source": "fallback:kenburns-in"
+  },
+  "s02": {
+    "file": "outputs/shots/s02_67b2c518_6s.mp4",
+    "source": "wan:s02_67b2c518.mp4"
+  },
+  "s03": {
+    "file": "outputs/shots/s03_04e5cd1a_6s.mp4",
+    "source": "wan:s03_04e5cd1a.mp4"
+  },
+  "s04": {
+    "file": "outputs/shots/s04_7a3c2809_6s.mp4",
+    "source": "wan:s04_7a3c2809.mp4"
+  },
+  "s05": {
+    "file": "outputs/shots/s05_85bc3902_5s.mp4",
+    "source": "wan:s05_85bc3902.mp4"
+  },
+  "s06": {
+    "file": "outputs/shots/s06_e650f569_7s.mp4",
+    "source": "wan:s06_e650f569.mp4"
+  },
+  "s07": {
+    "file": "outputs/shots/s07_1a7cb764_8s.mp4",
+    "source": "wan:s07_1a7cb764.mp4"
+  },
+  "s08": {
+    "file": "outputs/shots/s08_6a6071cc_9s.mp4",
+    "source": "wan:s08_6a6071cc.mp4"
+  },
+  "s09": {
+    "file": "outputs/shots/s09_1a073bac_9s.mp4",
+    "source": "wan:s09_1a073bac.mp4"
+  },
+  "s10": {
+    "file": "outputs/shots/s10_4e762c3d_9s.mp4",
+    "source": "wan:s10_4e762c3d.mp4"
+  },
+  "s11": {
+    "file": "outputs/shots/s11_60b6f9f8.mp4",
+    "source": "fallback:kenburns-out"
+  }
+}

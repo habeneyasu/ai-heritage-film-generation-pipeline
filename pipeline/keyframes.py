@@ -25,7 +25,7 @@ import subprocess
 import requests
 from dotenv import load_dotenv
 
-from pipeline.common import ROOT, call_logged, log_call
+from pipeline.common import ROOT, call_logged, log_call, require_env
 from pipeline.validate import load_storyboard
 
 OUT_DIR = ROOT / "outputs" / "keyframes"
@@ -86,6 +86,7 @@ def checked(shot: dict, prompt: str) -> str:
 def render(cfg: dict, prompt: str, seed: int, images: list = ()) -> bytes:
     """FLUX.2 klein takes multipart form fields (flux-1-schnell rejected `seed`, EXPERIMENTS.md E03);
     input images go in input_image_0, input_image_1, ..."""
+    require_env("CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_API_TOKEN")
     url = f"https://api.cloudflare.com/client/v4/accounts/{os.environ['CLOUDFLARE_ACCOUNT_ID']}/ai/run/{cfg['model']}"
     fields = {"prompt": prompt, "seed": seed, "width": cfg["width"], "height": cfg["height"], "steps": cfg["steps"]}
     files = {k: (None, str(v)) for k, v in fields.items()}
@@ -147,7 +148,4 @@ if __name__ == "__main__":
     ap.add_argument("--shots", help="comma-separated shot ids (default: all)")
     args = ap.parse_args()
     load_dotenv()
-    missing = [k for k in ("CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_API_TOKEN") if not os.environ.get(k)]
-    if missing:
-        raise SystemExit(f"Set {', '.join(missing)} in .env (see .env.example)")
     run(set(args.shots.split(",")) if args.shots else None)
