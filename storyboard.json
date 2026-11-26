@@ -4,38 +4,24 @@
   "language": "ti",
   "subtitle_language": "en",
   "fps": 24,
-  "style_block": "Cinematic historical realism, mid-20th century rural Tigray highlands, natural light, warm earth tones, soft film grain, houses entirely of stacked natural stone with flat roofs of timber and earth, unglazed windows with wooden shutters, traditional dress, nobody barefoot, only the people described, no modern elements, no lamps or electrical fittings, no text, subject centred in frame.",
+  "style_block": "Cinematic historical realism, mid-20th century rural Tigray highlands, natural light, warm earth tones, soft film grain, houses with outer walls of stacked natural stone, inner walls plastered smooth with earthen render, flat roofs of timber and earth, unglazed windows with wooden shutters, traditional dress, nobody barefoot, only the people described, no modern elements, no lamps or electrical fittings, no text, subject centred in frame.",
   "characters": {
     "weldechael": {
       "name": "ወልደቻኣል",
       "role": "the elder brother",
-      "description": "a Tigrayan Habesha highland man in his late fifties, deep brown skin, lean, a slender weathered sun-lined face and work-worn hands, short tightly curled grey hair and a short grey beard, slim build, matching off-white handwoven cotton clothes: a long-sleeved knee-length shirt over full-length trousers reaching the ankles, loose at the hips and narrow at the ankles; a broad blanket-like white cotton gabi with a crinkled layered texture covering both shoulders and upper arms, top edge folded loosely around the neck; dark grey closed-toe sandals with ankle straps; no head covering; holding one rough wooden crook-handled walking stick in one hand",
-      "close_up": "a Tigrayan Habesha highland man in his late fifties, deep brown skin, a slender weathered sun-lined face, short tightly curled grey hair and a short grey beard, a broad blanket-like white cotton gabi with a crinkled layered texture over his shoulders, its top edge folded loosely around the neck",
-      "reference": "outputs/references/options/weldechael_s201_0316b81f.jpg",
-      "face_crop": [
-        204,
-        20,
-        360,
-        400
-      ]
+      "description": "a Tigrayan Habesha highland man from Ethiopia in his late fifties, dark brown skin, a long narrow face with high cheekbones and a slender nose, short tightly coiled grey hair and a short grey beard, lean and weathered, work-worn hands; an off-white handwoven cotton shirt with long sleeves falling to his knees, over loose khaki-brown trousers narrow at the ankles; a broad blanket-like white cotton gabi with a crinkled layered texture over both shoulders and upper arms, top edge folded loosely around the neck; dark grey closed-toe sandals with ankle straps; no head covering; holding one rough wooden crook-handled walking stick in one hand",
+      "close_up": "a Tigrayan Habesha highland man from Ethiopia in his late fifties, dark brown skin, a long narrow face with high cheekbones and a slender nose, short tightly coiled grey hair and a short grey beard, lean and weathered, work-worn hands; a broad white cotton gabi with a crinkled layered texture over his shoulders"
     },
     "tesfay": {
       "name": "ተስፋይ",
       "role": "the younger brother",
-      "description": "a Tigrayan Habesha highland man in his late fifties, deep brown skin, lean, a slender weathered sun-lined face and work-worn hands, short tightly curled dark greying hair and a short dark beard turning grey, matching off-white handwoven cotton clothes: a long-sleeved knee-length shirt over full-length trousers reaching the ankles, loose at the hips and narrow at the ankles; a broad blanket-like white cotton gabi with a crinkled layered texture covering both shoulders and upper arms, top edge folded loosely around the neck; dark grey closed-toe sandals with ankle straps; no head covering",
-      "close_up": "a Tigrayan Habesha highland man in his late fifties, deep brown skin, a slender weathered sun-lined face, short tightly curled dark greying hair and a short dark beard turning grey, a broad blanket-like white cotton gabi with a crinkled layered texture over his shoulders, its top edge folded loosely around the neck",
-      "reference": "outputs/references/options/tesfay_s204_3ca00ad7.jpg",
-      "face_crop": [
-        204,
-        20,
-        360,
-        400
-      ]
+      "description": "a Tigrayan Habesha highland man from Ethiopia in his late fifties, dark brown skin, an oval face with high cheekbones, short tightly coiled black hair turning grey and a short dark beard turning grey, lean and weathered, work-worn hands; a plain light grey cotton shirt with long sleeves to mid-thigh, over dark brown trousers narrow at the ankles; a lighter white cotton gabi with a crinkled texture draped over his shoulders; dark grey closed-toe sandals with ankle straps; no head covering",
+      "close_up": "a Tigrayan Habesha highland man from Ethiopia in his late fifties, dark brown skin, an oval face with high cheekbones, short tightly coiled black hair turning grey and a short dark beard turning grey, lean and weathered, work-worn hands; a lighter white cotton gabi with a crinkled texture over his shoulders, a light grey shirt beneath"
     },
     "grandmothers": {
       "name": "ዓበይቲ ኣዴታት",
       "role": "the grandmothers",
-      "description": "two elderly rural Tigrayan women with dark brown skin, lean, weathered sun-lined faces and work-worn hands, ordinary villagers, wearing long white cotton kemis dresses to the ankles with long sleeves, a dark woven tibeb band running down the centre front in a V from the neckline and small embroidered cross motifs on the chest, white netela shawls over their shoulders or heads, shuruba hair braided tightly close to the scalp on top and fuller at the back and sides, small earrings and a thin neck cord, practical footwear"
+      "description": "two elderly rural Tigrayan Habesha women from Ethiopia with dark brown skin, lean, weathered sun-lined faces and work-worn hands, ordinary villagers, wearing long white cotton kemis dresses to the ankles with long sleeves, a dark woven tibeb band running down the centre front in a V from the neckline and small embroidered cross motifs on the chest, white netela shawls over their shoulders or heads, shuruba hair braided tightly close to the scalp on top and fuller at the back and sides, small earrings and a thin neck cord, practical footwear"
     }
   },
   "reference_sheet": {
