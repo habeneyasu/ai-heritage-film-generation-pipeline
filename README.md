@@ -22,7 +22,7 @@ The story and narration were written with the author from family recollection, n
 
 ## What it costs
 
-**$0 spent**: every model ran on a free tier. At list prices the same work would cost **about $2.65**, almost all of it GPU time: 3.55 Kaggle GPU hours, mainly for nine Wan clips at about 18 minutes each. 134 successful model calls and 17 failed ones are logged in `runs.jsonl`. Details per stage: [COSTS.md](COSTS.md).
+**$0 spent**: every model ran on a free tier. At list prices the same work would cost **about $2.65**, almost all of it GPU time: 3.55 Kaggle GPU hours, mainly for nine Wan clips at about 18 minutes each. 136 successful model calls and 20 failed ones are logged in `runs.jsonl`. Details per stage: [COSTS.md](COSTS.md).
 
 ## Run it
 
