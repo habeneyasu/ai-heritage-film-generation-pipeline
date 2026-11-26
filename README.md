@@ -90,7 +90,7 @@ My father, the custodian of the story, gave permission for this film; the brothe
 | [REPORT.md](REPORT.md) | The report: audience, what changed, hardest problem, practices tested, what next |
 | [DESIGN.md](DESIGN.md) | Story, audience, characters and world, shot plan, user tests, change log |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | Stages, the storyboard contract, caching, failure handling, the Kaggle GPU split |
-| [EXPERIMENTS.md](EXPERIMENTS.md) | Twelve experiments with hypotheses, results and decisions |
+| [EXPERIMENTS.md](EXPERIMENTS.md) | Thirteen experiments with hypotheses, results and decisions |
 | [FAILURES.md](FAILURES.md) | Real blockers and how they were solved |
 | [COSTS.md](COSTS.md) | Model calls, latency, GPU minutes and list price, from `runs.jsonl` |
 | [ETHICS.md](ETHICS.md) | Consent, licences, AI disclosure |
