@@ -27,3 +27,11 @@ Real blockers (quota, memory, consistency, language): what broke, what was tried
   - Four rounds of portrait options before the author approved two. The gabi came out as a towel (`docs/evidence/e04_portraits_first_gabi.jpg`), then as a neck scarf when the prompt said "wrapped high around the neck"; trousers were short and shirt and trousers differed in colour; the faces were too comfortable for the period ("weathered, sun-lined" fixed it).
   - Workers AI accepts at most 2048 characters per prompt. Detailed characters pushed the gathering shot over the limit several times; wording was tightened and the stage refuses to send a prompt that is too long.
 - **What fixed it:** the author's approved portraits plus the two-step keyframes (EXPERIMENTS.md E04).
+
+## F05: Wan 2.2 did not fit on a Kaggle T4 (2026-11-25)
+- **What broke:** the model card asks for at least 24 GB of GPU memory; Kaggle's free GPUs are 2× Tesla T4 with about 14.5 GB each and no bfloat16.
+  1. With Diffusers' model CPU offload in float16, the run failed with `CUDA out of memory` while moving a whole component to the GPU: the UMT5-XXL text encoder (~11 GB) and the 5B transformer (~10 GB) are each moved in one piece.
+  2. With the text encoder on the second GPU and the transformer on the first (12.8 GB), generation started at about 16.5 s per step, then failed at step 3 with `cusolver error: CUSOLVER_STATUS_INTERNAL_ERROR`: the scheduler's tiny linear solve could not start a cuSOLVER handle on the nearly full GPU.
+- **What fixed it:** encode every prompt on GPU 1 and then drop the text encoder; keep the transformer on GPU 0; solve the scheduler's small system on the CPU (same numbers); decode the video on GPU 1. The s09 clip then finished: 81 frames at 704×704 in 18.5 minutes, peak 14.9 GB on GPU 0.
+- **Trade-off:** clips are 3.4 s, so `pipeline/shots.py` slows them to the shot length with motion interpolation; any shot without a clip uses its camera move.
+- **Evidence:** runs.jsonl, stage `shots`, two `"status": "error"` lines (out of memory, cuSOLVER) followed by `"ok"` with `peak_gpu_gb` 14.94.

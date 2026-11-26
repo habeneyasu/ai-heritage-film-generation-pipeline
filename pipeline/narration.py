@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
-from pipeline.common import ROOT, QuotaExhausted, call_logged, log_call
+from pipeline.common import ROOT, QuotaExhausted, call_logged, log_call, require_env
 from pipeline.validate import load_storyboard
 
 OUT_DIR = ROOT / "outputs" / "narration"
@@ -51,11 +51,23 @@ def synthesize(client, model: str, text: str, voice: str) -> bytes:
     return r.candidates[0].content.parts[0].inline_data.data
 
 
+def gemini(api_version: str):
+    """Client factory: the client (and the API key) is only created when a line is not cached."""
+    made = {}
+
+    def get():
+        if "client" not in made:
+            require_env("GEMINI_API_KEY")
+            made["client"] = genai.Client(http_options=types.HttpOptions(api_version=api_version))
+        return made["client"]
+    return get
+
+
 def generate(client, *, model, api_version, voice, text, path, stage, extra=None) -> dict:
     """Generate one line unless its hashed file already exists. Returns a manifest entry."""
     if path.exists():
         return {"file": str(path.relative_to(ROOT)), "audio_s": duration_s(path), "cached": True}
-    audio, entry = call_logged(lambda: synthesize(client, model, text, voice),
+    audio, entry = call_logged(lambda: synthesize(client(), model, text, voice),
                                stage=stage, model=model, attempts=4, backoff_s=10,
                                params={"voice": voice, "text": text, "api_version": api_version, **(extra or {})})
     path.write_bytes(audio)
@@ -72,7 +84,7 @@ def line_hash(model: str, voice: str, text: str) -> str:
 def run_storyboard() -> None:
     sb = load_storyboard()
     cfg = sb["models"]["narration"]
-    client = genai.Client(http_options=types.HttpOptions(api_version=cfg["api_version"]))
+    client = gemini(cfg["api_version"])
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     manifest = {}
     for shot in sb["shots"]:
@@ -94,7 +106,7 @@ def run_storyboard() -> None:
 
 
 def run_sample() -> None:
-    client = genai.Client(http_options=types.HttpOptions(api_version=SAMPLE_API))
+    client = gemini(SAMPLE_API)
     SAMPLE_DIR.mkdir(parents=True, exist_ok=True)
     for sid, text, styled in SAMPLES:
         prompt = SAMPLE_STYLE + text if styled else text

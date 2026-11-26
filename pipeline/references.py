@@ -10,7 +10,6 @@ Writes outputs/references/options/<character>_s<seed>_<hash>.jpg and a contact s
 """
 
 import hashlib
-import os
 import subprocess
 
 from dotenv import load_dotenv
@@ -73,7 +72,4 @@ def run() -> None:
 
 if __name__ == "__main__":
     load_dotenv()
-    missing = [k for k in ("CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_API_TOKEN") if not os.environ.get(k)]
-    if missing:
-        raise SystemExit(f"Set {', '.join(missing)} in .env (see .env.example)")
     run()

@@ -1,0 +1,26 @@
+{
+  "s01": {
+    "file": "outputs/narration/s01_63c6ad4f.wav",
+    "audio_s": 6.88
+  },
+  "s02": {
+    "file": "outputs/narration/s02_66c09891.wav",
+    "audio_s": 10.94
+  },
+  "s03": {
+    "file": "outputs/narration/s03_06617080.wav",
+    "audio_s": 2.67
+  },
+  "s04": {
+    "file": "outputs/narration/s04_d0fae437.wav",
+    "audio_s": 2.76
+  },
+  "s05": {
+    "file": "outputs/narration/s05_27931d57.wav",
+    "audio_s": 2.36
+  },
+  "s06": {
+    "file": "outputs/narration/s06_9ebfa026.wav",
+    "audio_s": 3.92
+  }
+}

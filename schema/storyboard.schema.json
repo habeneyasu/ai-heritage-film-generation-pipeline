@@ -173,6 +173,11 @@
           },
           "instrumental": {
             "type": "boolean"
+          },
+          "chosen": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "The candidate the author picked after listening (outputs/music/candidates/<cue>_<n>.wav)."
           }
         }
       }
@@ -275,6 +280,23 @@
           },
           "music_cue": {
             "type": "string"
+          },
+          "crop": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Where to cut the square shot: y moves the 16:9 window (0 top, 1 bottom), x moves the 9:16 window (0 left, 1 right). Default 0.5 (centre).",
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "y": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
           }
         }
       }
@@ -364,6 +386,15 @@
         },
         "steps": {
           "type": "integer"
+        },
+        "frames": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Frames per generated clip (video model)."
+        },
+        "guidance": {
+          "type": "number",
+          "minimum": 0
         }
       }
     }

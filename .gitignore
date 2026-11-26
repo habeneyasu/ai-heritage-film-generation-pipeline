@@ -19,3 +19,10 @@ outputs/**/*.part
 .vscode/
 .idea/
 .DS_Store
+
+# Rebuilt by `make film` with FFmpeg only (no model calls), so not committed:
+outputs/shots/*.mp4
+outputs/music/score.wav
+outputs/edit/*.wav
+outputs/edit/radio_cut.*
+outputs/final/*.mp4
