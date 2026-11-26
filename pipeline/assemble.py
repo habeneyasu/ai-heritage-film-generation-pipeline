@@ -12,6 +12,7 @@ loudness normalisation (targets in storyboard.json "mix"). Video: each square sh
 
 import argparse
 import json
+import re
 import subprocess
 
 from pipeline.common import ROOT
@@ -26,6 +27,7 @@ FORMATS = {  # name: (width, height, subtitle size, subtitle margin in libass un
     "16x9": (1920, 1080, 15, 18),
     "9x16": (1080, 1920, 10, 70),   # higher margin keeps text above the app UI
 }
+MAX_CUE_CHARS = 60  # longer subtitles can wrap to three lines in 9:16 (EXPERIMENTS.md E13), so they are split
 
 
 def crop_filter(name: str, shot: dict) -> str:
@@ -67,9 +69,25 @@ def srt_time(t: float) -> str:
     return f"{ms // 3600000:02}:{ms // 60000 % 60:02}:{ms // 1000 % 60:02},{ms % 1000:03}"
 
 
+def split_cue(a: float, b: float, text: str) -> list[tuple]:
+    """One sentence per subtitle, and none too long for two lines in 9:16: otherwise split in two at
+    the sentence end, else the comma or semicolon, nearest the middle (else a space). Each half is
+    shown for a time in proportion to its length."""
+    sentence_ends = [m.end() for m in re.finditer(r'[.!?]["”]?(?= )', text)]
+    if len(text) <= MAX_CUE_CHARS and not sentence_ends:
+        return [(a, b, text)]
+    breaks = sentence_ends or [m.end() for m in re.finditer(r'[,;](?= )', text)] \
+        or [i for i, ch in enumerate(text) if ch == " "]
+    cut = min(breaks, key=lambda i: abs(i - len(text) / 2))
+    first, second = text[:cut].strip(), text[cut:].strip()
+    t = round(a + (b - a) * len(first) / (len(first) + len(second)), 3)
+    return [(a, t, first), (t, b, second)]
+
+
 def write_srt(sb: dict, shots: list, total: float, path) -> None:
     lead = sb["edit"]["lead_in_s"]
-    cues = [(s["start"] + lead, s["start"] + lead + s["audio"] + 0.3, s["en"]) for s in shots if s["line"]]
+    cues = [cue for s in shots if s["line"]
+            for cue in split_cue(s["start"] + lead, s["start"] + lead + s["audio"] + 0.3, s["en"])]
     cues.append((total - sb["end_card"]["duration_s"], total, sb["end_card"]["text"]))
     path.write_text("\n".join(f"{i}\n{srt_time(a)} --> {srt_time(b)}\n{t}\n" for i, (a, b, t) in enumerate(cues, 1)),
                     encoding="utf-8")
