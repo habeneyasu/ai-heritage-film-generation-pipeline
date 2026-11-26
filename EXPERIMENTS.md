@@ -69,7 +69,7 @@ One entry per experiment. Change one thing at a time and keep the seed fixed whe
 - **Hypothesis:** three ACE-Step candidates per cue, with the same caption, tempo and key but different seeds, differ enough to be worth choosing between.
 - **Change:** ACE-Step 1.5 turbo, 8 steps, instrumental, seeds 301–303, 311–313, 321–323; all nine generated in 6.5 minutes on one T4.
 - **Result:** every candidate came back at the exact requested length. They differ clearly in level and dynamics (loudness range): gathering 2.1 / 1.1 / 2.9 LU, journey 5.8 / 7.2 / 13.3 LU, dawn 8.7 / 6.0 / 14.5 LU for candidates 1 / 2 / 3. The author listened and chose candidate 3 for every cue, which is also the most dynamic candidate in each.
-- **Decision:** candidate 3 for gathering, journey and dawn (`chosen` in storyboard.json). The author chose by ear; no further reason was written down, so the measured difference above is the only recorded one.
+- **Decision:** candidate 3 for gathering, journey and dawn (`chosen` in storyboard.json). The author's reason, after listening to all three of each cue: candidate 3 is the closest to the film. The measured difference above is consistent with that choice, but it was made by ear, not by the numbers.
 
 ## E11: Centre crop or per-shot crop for the two formats? (2026-11-25)
 - **Hypothesis:** with subjects centred in every keyframe, a centre crop of the square shot works for both 16:9 and 9:16.
