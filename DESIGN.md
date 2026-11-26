@@ -37,7 +37,7 @@ The film shows true love through action rather than words: refusing to celebrate
 
 | Decision | Choice | Reason |
 |---|---|---|
-| Length | About 80 s (60–90 s required) | Enough for one complete story with a clear ending |
+| Length | About 80 s planned; **89.5 s in the cut** (60–90 s required) | Enough for one complete story with a clear ending. The cut is longer because each shot now lasts at least as long as its narration line (s01, s02 and s11 grew; EXPERIMENTS.md E08) |
 | Pacing | More than half the running time (about 42 s) goes to the repeated journey (shots 6–10) | The journey is the emotional heart; the gathering sets it up quickly |
 | Narration language | **Tigrigna** | It is the brothers' language; the call ሓወይ only works in Tigrigna. If Gemini TTS handles Tigrigna badly, the fallback is Amharic or English narration with the ሓወይ lines kept in Tigrigna, and the failure goes in FAILURES.md. |
 | Narration framing | A generic, passed-down voice ("in a highland village in Tigray, there lived two brothers, ወልደቻኣል and ተስፋይ…"), not as a named family relation. The names are kept; the last line says it is a story I grew up hearing. | The film reaches anyone as a timeless story and reveals fewer family details. The family relation is recorded only in ETHICS.md, for consent. |
@@ -156,15 +156,18 @@ Subjects are composed in the centre of the frame so that the 9:16 and 16:9 versi
 
 ## 9. User test 2: near-final cut
 
-**Status:** not yet run.
+**Status:** run on 2026-11-26 with the near-final cut (Wan clips, chosen score), with **two viewers**. Feedback collected and relayed by the author; their roles were not recorded.
 
-**Plan:** the near-final 9:16 film, sent with a written questionnaire so every answer is recorded: the five questions in section 8, plus "one thing you would change". At least 3 people, including a Tigrigna speaker and a non-Tigrigna speaker.
-
-| Person (role, not name) | What they said | Insight |
+| What they said | Insight | Change |
 |---|---|---|
-| | | |
+| The two brothers' skin and faces look closer to Arab than Ethiopian | The references fixed consistency, not identity: the model's default face survives (EXPERIMENTS.md E04) | Faces described by skin, hair texture and face shape: dark brown skin, short tightly coiled hair, a long narrow face with high cheekbones (ወልደቻኣል) and an oval face (ተስፋይ) |
+| The traditional dress does not come through as expected: shirt and trousers look like one uniform, and both brothers are dressed the same | Matching cloth for shirt and trousers, and identical outfits, read as a costume | Shirt and trousers now differ, and the brothers dress differently: ወልደቻኣል in an off-white knee-length shirt, khaki-brown trousers and a broad gabi; ተስፋይ in a light grey shirt, dark brown trousers and a lighter gabi |
+| The stone houses are good, but need refinement | Outside stone is right; inside, the walls were bare stone | Inner walls plastered smooth with earthen render; outer walls stay stacked stone |
+| Overall good; the highland landscape and the narration work best | The setting and the Tigrigna narration land; the people are the weak point | Landscape shots and narration unchanged |
 
-**What changed because of it:** —
+**What changed because of it:** the storyboard was updated for all three points (branch `feat/test2-storyboard`, commit `091df8a`). The approved portraits were cleared, because the faces and dress they carry are the ones the viewers criticised, so new portraits must be chosen first.
+
+**Not yet in the submitted film.** Rendering the change needs new portraits, all keyframes and new Wan clips. The first call was refused: Cloudflare's daily free allowance was already used up (FAILURES.md F06). The submitted film is therefore the version the viewers saw; the change is ready to render with `make references`, `make keyframes`, `make wan` and `make film` once the allowance returns.
 
 ## 10. Storyboard change log
 
@@ -191,3 +194,5 @@ Subjects are composed in the centre of the frame so that the 9:16 and 16:9 versi
 | 2026-11-25 | s02 line: neither was happy at a gathering without the other, and each sent for his brother; s03 now only the waiting | The author's rewrite of the Tigrigna line |
 | 2026-11-25 | Brothers about the same age; dress, footwear and grandmothers specified; houses entirely stone with a thatched ኣጉዶ; no lanterns (moonlight only); እንጀራ, ወጥ and ጠላ added, with grandmothers preparing food and ጠላ | The author's cultural references, after the first keyframes |
 | 2026-11-25 | Wan motion prompts rewritten as static camera with small natural movement; Wan clips replace camera moves for s02–s10; placeholder drone to be replaced by an ACE-Step score | User test 1 (general feedback: natural, but the storyboard needs more exact information) |
+| 2026-11-26 | Narration sets the cut: a shot lasts at least as long as its line (s01 8.1 s, s02 12.1 s, s11 7.3 s; total 89.5 s); per-shot crop for 16:9 and 9:16; ACE-Step candidate 3 chosen for each cue | Radio cut timing (s02 started 1.4 s late), the crop check on all 11 shots, and the author's listening |
+| 2026-11-26 | Faces (skin, hair texture, face shape), distinct dress per brother with shirt and trousers that differ, inner walls plastered with earthen render; approved portraits cleared (branch `feat/test2-storyboard`, not rendered yet) | User test 2 (two viewers) |

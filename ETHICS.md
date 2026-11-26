@@ -31,15 +31,15 @@ Three different things are tracked separately:
 
 An open-source model licence does not by itself guarantee that every generated output is free of third-party rights claims. That is why section 5 adds a review before publication.
 
-*Each entry is checked against the model card or service terms when the model is first used. "To verify" means it has not yet been checked.*
+*Checked on 2026-11-26 against the model cards and provider terms linked below. "To verify" remains only where the terms we could read do not settle the question.*
 
 | Stage | Model / tool | Model licence | Provider terms | Output rights |
 |---|---|---|---|---|
-| Script, translation | Gemini 3.8 Flash / Flash-Lite | Proprietary (API access only) | Gemini API terms; the free tier may use content to improve Google's products (see section 4) | To verify |
-| Narration | Gemini 3.8 Flash TTS | Proprietary (API access only) | Gemini API terms, as above | To verify |
-| Keyframes | FLUX.2 klein 4B / FLUX.1 schnell | Apache 2.0 (klein 4B, schnell). The klein 9B version has a different, non-commercial licence and **will not be used**. | Cloudflare Workers AI terms: **to verify** | To verify |
-| Moving shots | Wan 2.2 TI2V-5B | Apache 2.0 (model card) | **Kaggle is the provider** even though the notebook is mine: Kaggle terms to verify. The weights are downloaded from Hugging Face (model-hosting and download terms to verify) and **run inside the Kaggle notebook**, not through an external API. | To verify |
-| Music | ACE-Step 1.5 | MIT (project licence) | **Kaggle is the provider**: Kaggle terms to verify. The weights are downloaded from Hugging Face (model-hosting and download terms to verify) and **run inside the Kaggle notebook**, not through an external API. | The project states outputs may be used commercially. This is **not** treated as a guarantee of copyright clearance for every track; see the originality check in section 5. |
+| Script, translation | None | Not used: the story and the narration were written with the author, not generated | Not applicable | Not applicable |
+| Narration | Gemini 3.8 Flash TTS | Proprietary (API access only) | [Gemini API Additional Terms](https://ai.google.dev/gemini-api/terms); the free tier may use content to improve Google's products (see section 4) | Google "won't claim ownership" of generated content, may generate similar content for others, and makes the user responsible for its use (archived terms of 25 Sep 2025; to re-check against the live page) |
+| Keyframes, references | FLUX.2 klein 4B (FLUX.1 schnell only tested, E03) | Apache 2.0 ([model card](https://huggingface.co/black-forest-labs/FLUX.2-klein-4B)); the 9B version is non-commercial and **is not used** | [Workers AI privacy and data use](https://developers.cloudflare.com/workers-ai/platform/privacy/): inputs and outputs are Customer Content, Cloudflare does not use them to train models | Customer Content: "You own, and are responsible for, your Customer Content"; model licence terms apply between us and the model provider |
+| Moving shots | Wan 2.2 TI2V-5B (Diffusers weights) | Apache 2.0 ([model card](https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B-Diffusers)) | **Kaggle is the provider**: weights downloaded from Hugging Face and run inside a private Kaggle notebook. [Kaggle terms](https://www.kaggle.com/terms): **to verify** for notebook outputs | Apache 2.0 places no restriction on outputs; Kaggle's position on notebook outputs: **to verify** |
+| Music | ACE-Step 1.5 turbo | Code MIT ([GitHub](https://github.com/ace-step/ACE-Step-1.5)); weights tagged MIT on the [model card](https://huggingface.co/ACE-Step/Ace-Step1.5), but the weights repo has no LICENSE file ([open discussion](https://huggingface.co/ACE-Step/Ace-Step1.5/discussions/27)) | **Kaggle is the provider**, as above | The model card says outputs may be used commercially. This is **not** treated as a guarantee of copyright clearance for every track; see the originality check in section 5 |
 | Assembly | FFmpeg | LGPL / GPL (tool only) | Not applicable (runs locally) | Not applicable |
 
 ## 4. Private data

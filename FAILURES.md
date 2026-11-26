@@ -35,3 +35,11 @@ Real blockers (quota, memory, consistency, language): what broke, what was tried
 - **What fixed it:** encode every prompt on GPU 1 and then drop the text encoder; keep the transformer on GPU 0; solve the scheduler's small system on the CPU (same numbers); decode the video on GPU 1. The s09 clip then finished: 81 frames at 704×704 in 18.5 minutes, peak 14.9 GB on GPU 0.
 - **Trade-off:** clips are 3.4 s, so `pipeline/shots.py` slows them to the shot length with motion interpolation; any shot without a clip uses its camera move.
 - **Evidence:** runs.jsonl, stage `shots`, two `"status": "error"` lines (out of memory, cuSOLVER) followed by `"ok"` with `peak_gpu_gb` 14.94.
+
+## F06: Cloudflare's daily free allowance ran out before the second-test changes (2026-11-26)
+- **What broke:** after user test 2, new portraits were needed. The first call returned `429: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan`, although no Cloudflare call had been made that day.
+- **What we think happened:** COSTS.md assumed about 105 neurons per image (4 tiles × 26.05). If klein is metered per step, as one price aggregator lists it, an image costs about 416 neurons (4 steps × 4 tiles × 26.05), and the previous day's 101 images used far more than the allowance. We could not confirm this or the reset time.
+- **What we tried:** none beyond the one refused call. The retry logic sent it three times, because Workers AI gives no retry time; `call_logged` now stops at once on any daily-quota 429 (`QuotaExhausted`), as it already did for Gemini (F03).
+- **Workaround:** the storyboard change is committed on its own branch (`feat/test2-storyboard`) and `main` stays consistent with the submitted film, so the pipeline still rebuilds what was submitted with no calls. Options to render the change: wait for the allowance to reset, or run the same open model (FLUX.2 klein 4B, Apache 2.0) on a Kaggle GPU, where 26 hours of quota remain.
+- **Lesson:** count the provider's own unit (neurons, steps, tiles) before iterating heavily on a free tier, and keep a few calls in reserve for the end.
+- **Evidence:** runs.jsonl, stage `references`, three `"status": "error"` lines at 2026-11-26T04:16Z.
