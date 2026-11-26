@@ -49,22 +49,20 @@ An open-source model licence does not by itself guarantee that every generated o
 - **User-test participants:**
   - Feedback is recorded without names or unnecessary identifying details. Each person is listed only by a general role, such as "Tigrigna speaker" or "non-Tigrigna speaker".
   - Details such as relationship, age range or diaspora status are left out, because in a small community a combination of them could identify someone.
-  - Participants are told before they give feedback that it may be included in the public project documentation.
+  - Before giving feedback, participants are told what the film is for and that their feedback may be included in the public project documentation. The author confirmed this for both viewers of user test 2.
 
 ## 5. Review before publication (originality and representation)
 
 Before the film or any asset is published, every generated output is reviewed:
 
-| Check | Applies to | What is checked |
-|---|---|---|
-| Music originality | Score candidates and the final score | The score is reviewed for recognisable similarities to known protected compositions, particularly melodies and distinctive hooks. Any suspicious track is rejected and regenerated with a different seed and prompt. This review reduces risk but does not guarantee copyright clearance. |
-| Cultural representation | Keyframes and video shots | Clothing, homes, food and customs are shown respectfully and accurately, following the visual rules in DESIGN.md. There are no caricatures and no elements from other cultures or periods. |
-| Unintended marks | All images and video | There is no unintended text, logos or watermarks beyond the expected model provenance (SynthID, C2PA). |
-
-The result of each review is noted in EXPERIMENTS.md or FAILURES.md, together with what was regenerated.
+| Check | Applies to | What is checked | Result (2026-11-26) |
+|---|---|---|---|
+| Music originality | Score candidates and the final score | The score is reviewed for recognisable similarities to known protected compositions, particularly melodies and distinctive hooks. Any suspicious track is rejected and regenerated with a different seed and prompt. This review reduces risk but does not guarantee copyright clearance. | The captions give only instruments, mood, tempo and key (`music_cues` in storyboard.json); no existing song, artist or reference track was given to the model. The author listened to all nine candidates when choosing (EXPERIMENTS.md E10). No automated similarity check was run. |
+| Cultural representation | Keyframes and video shots | Clothing, homes, food and customs are shown respectfully and accurately, following the visual rules in DESIGN.md. There are no caricatures and no elements from other cultures or periods. | The first keyframes failed (bread rolls, lanterns, bare feet, a village street) and were regenerated (FAILURES.md F04). User test 2 found the faces read as Arab rather than Ethiopian and the dress too uniform; the fix is on branch `feat/test2-storyboard`, not yet rendered (DESIGN.md section 9, FAILURES.md F06). |
+| Unintended marks | All images and video | There is no unintended text, logos or watermarks beyond the expected model provenance (SynthID, C2PA). | None found, checked by eye on all 11 final keyframes; the Wan clips start from these keyframes, and their first and last frames were checked in EXPERIMENTS.md E12. |
 
 ## 6. Style and cultural respect
 
-- The style is described by its qualities (for example cinematic, warm, soft lantern light) and never by naming a living artist.
+- The style is described by its qualities (for example cinematic, warm, natural light and moonlight) and never by naming a living artist.
 - Cultural details (white gabi, ህድሞ, ሳፁን, ኣጉዶ, ኣጅቦ, ሕምባሻ, መሶብ) were checked against the author's family knowledge and recollections. Native-speaker validation of the Tigrigna narration and names is recorded separately, in DESIGN.md (section 7, the Tigrigna sample check, and sections 8–9, the user tests).
 - The film leaves out recent political events. It is about two brothers and their love.

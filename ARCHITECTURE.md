@@ -30,7 +30,7 @@ flowchart LR
 | Shots | `pipeline/shots.py`, `pipeline/wan.py`, `notebooks/wan_shots.py` | Wan 2.2 TI2V-5B, else an FFmpeg camera move | Kaggle 2× T4 / local | `outputs/shots/` | keyframe contents, prompt, settings |
 | Narration | `pipeline/narration.py` | Gemini TTS (`gemini-3.8-flash-tts`, voice Sulafat) | Google AI Studio | `outputs/narration/` | model, voice, text |
 | Music | `pipeline/music.py`, `notebooks/music_cues.py` | ACE-Step 1.5 turbo | Kaggle T4 | `outputs/music/` | cue, seeds; the author's `chosen` candidate |
-| Assemble | `pipeline/assemble.py` | FFmpeg | local | `outputs/final/` | always re-run (about 75 s) |
+| Assemble | `pipeline/assemble.py` | FFmpeg | local | `outputs/final/` | always re-run (about 90 s) |
 
 There is no separate script stage. The story and the narration were written with the author from family recollection (DESIGN.md), not generated, and they live in `storyboard.json`.
 
