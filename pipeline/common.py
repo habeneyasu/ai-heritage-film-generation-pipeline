@@ -50,6 +50,8 @@ def call_logged(fn, *, stage, model, params, seed=None, cost_usd=0.0, attempts=3
             wait = retry_delay_s(e)
             if wait and wait > MAX_WAIT_S:
                 raise QuotaExhausted(f"{model}: quota used up; provider says retry in {wait / 3600:.1f} h") from e
+            if "429" in str(e) and "daily" in str(e).lower():  # e.g. Workers AI's daily neuron allocation (F06)
+                raise QuotaExhausted(f"{model}: daily allowance used up; retry after it resets") from e
             if attempt == attempts:
                 raise
             time.sleep(max(backoff_s * attempt, wait or 0))
