@@ -102,7 +102,7 @@ def run_storyboard() -> None:
             MANIFEST.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
             raise SystemExit(f"Stopped at {shot['id']}: {e}. Lines done so far are saved; re-run later.")
         manifest[shot["id"]] = {k: item[k] for k in ("file", "audio_s")}
-        fit = "OK" if item["audio_s"] <= shot["duration_s"] else "LONGER THAN SHOT"
+        fit = "OK" if item["audio_s"] <= shot["duration_s"] else "LONGER THAN SHOT (assembly lengthens it)"
         print(f"{shot['id']}  {item['audio_s']:5.2f}s speech / {shot['duration_s']}s shot  "
               f"{'cached' if item['cached'] else 'generated'}  {fit}")
     MANIFEST.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
