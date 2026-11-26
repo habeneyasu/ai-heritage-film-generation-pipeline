@@ -82,7 +82,6 @@ My father, the custodian of the story, gave permission for this film; the brothe
 - Close-up faces match the approved portraits only partly, and the opening shot does not show clearly that the homes are about 10 km apart ([EXPERIMENTS.md](EXPERIMENTS.md) E04).
 - The Tigrigna narration was checked by one native speaker, the author; a second listener was planned but not available in time.
 - Free tiers set the pace: Gemini TTS allows about 10 requests a day, Workers AI 10,000 neurons a day, Kaggle 30 GPU hours a week.
-- A `Dockerfile` (`make docker`) is included but has not been tested.
 
 ## Documents
 
