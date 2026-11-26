@@ -4,7 +4,7 @@ What the film cost to make: model calls, time, GPU minutes and money. The table 
 
 **Money spent: $0.** Every model ran on a free tier. **List-price equivalent: about $2.65**, almost all of it GPU time (see below).
 
-## Model calls (as of 2026-11-26 06:50 EAT)
+## Model calls (final, 2026-11-26 11:15 EAT)
 
 | Stage | Model | Calls OK | Failed | Model time | Cost (USD) |
 |---|---|---|---|---|---|
@@ -12,11 +12,11 @@ What the film cost to make: model calls, time, GPU minutes and money. The table 
 | keyframes-seed-check | `@cf/black-forest-labs/flux-1-schnell` | 0 | 3 | 0.0 min | 0.00 |
 | keyframes-test | `@cf/black-forest-labs/flux-2-klein-4b` | 4 | 0 | 0.7 min | 0.00 |
 | music | `ACE-Step 1.5` | 3 | 0 | 5.4 min | 0.00 |
-| narration | `gemini-3.8-flash-tts` | 14 | 11 | 1.4 min | 0.00 |
+| narration | `gemini-3.8-flash-tts` | 16 | 11 | 1.5 min | 0.00 |
 | narration-sample | `gemini-3.8-flash-tts` | 6 | 1 | 0.4 min | 0.00 |
-| references | `@cf/black-forest-labs/flux-2-klein-4b` | 48 | 0 | 8.4 min | 0.00 |
+| references | `@cf/black-forest-labs/flux-2-klein-4b` | 48 | 3 | 8.4 min | 0.00 |
 | shots | `Wan-AI/Wan2.2-TI2V-5B-Diffusers` | 10 | 2 | 182.0 min | 0.00 |
-| **Total** | | **134** | **17** | **206.4 min** | **0.00** |
+| **Total** | | **136** | **20** | **206.6 min** | **0.00** |
 
 A music "call" is one cue with three candidates. Not in the table: about eight Cloudflare calls from throwaway test scripts (EXPERIMENTS.md E03, E04) and the TTS calls made before logging existed (FAILURES.md F01).
 

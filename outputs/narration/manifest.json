@@ -22,5 +22,25 @@
   "s06": {
     "file": "outputs/narration/s06_9ebfa026.wav",
     "audio_s": 3.92
+  },
+  "s07": {
+    "file": "outputs/narration/s07_831964e7.wav",
+    "audio_s": 4.51
+  },
+  "s08": {
+    "file": "outputs/narration/s08_5feba051.wav",
+    "audio_s": 4.9
+  },
+  "s09": {
+    "file": "outputs/narration/s09_6aef35f1.wav",
+    "audio_s": 3.76
+  },
+  "s10": {
+    "file": "outputs/narration/s10_a05b4318.wav",
+    "audio_s": 4.4
+  },
+  "s11": {
+    "file": "outputs/narration/s11_0d53c471.wav",
+    "audio_s": 6.12
   }
 }
