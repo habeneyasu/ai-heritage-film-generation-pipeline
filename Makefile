@@ -26,7 +26,7 @@ narration:           ## one Tigrigna line per shot (Gemini TTS)
 shots: keyframes     ## Wan clips where they exist, otherwise the storyboard's camera move
 	$(PY) pipeline.shots
 
-score:               ## join the chosen music candidates; skipped until cues are chosen (placeholder used)
+score:               ## join the chosen music candidates into one score (assembly uses a drone if it is missing)
 	-$(PY) pipeline.music score
 
 assemble:            ## edit, mix, subtitles, end card -> outputs/final/
