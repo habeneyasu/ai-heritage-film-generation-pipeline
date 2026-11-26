@@ -56,5 +56,5 @@ if __name__ == "__main__":
     total = sum(s["duration_s"] for s in sb["shots"]) + sb["end_card"]["duration_s"]
     narrated = sum(1 for s in sb["shots"] if s["narration"])
     print(f"storyboard.json is valid: {len(sb['shots'])} shots, {narrated} narrated, "
-          f"{len(sb['music_cues'])} music cues, {total}s total")
+          f"{len(sb['music_cues'])} music cues, {total}s planned (assembly may lengthen shots to fit narration)")
     sys.exit(0)
